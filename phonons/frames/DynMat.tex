@@ -1,0 +1,84 @@
+\begin{frame}
+  \frametitle{The Dynamical Matrix}
+  The Dynamical Matrix
+  \begin{align*}
+    \mathcolor{black}{
+      D_{s\alpha,t\beta}(\boldsymbol{q})
+    }
+    % &=
+    % {1\over\sqrt{M_sM_t}\,}
+    % \mathcolor{black}{\sum_k}
+    % \mathcolor{black}{
+    %   \frac{
+    %   \partial^2 E^0_{\text{tot}}
+    %   }{
+    %   \partial {u}_{s\alpha}^j
+    %   \partial {u}_{t\beta}^k
+    %   }
+    %   e^{i(\boldsymbol{x}_k - \boldsymbol{x}_j)}
+    % } \cr
+    &=
+    {1\over\sqrt{M_sM_t}\,}
+    \sum_k
+    C_{s\alpha,t\beta}(j, k)
+    e^{i\boldsymbol{q}(\boldsymbol{x}_k - \boldsymbol{x}_j)} \cr
+    &=
+    {1\over\sqrt{M_sM_t}\,}
+    \sum_l
+    C_{s\alpha,t\beta}(0, l)
+    e^{i\boldsymbol{q}\boldsymbol{x}_l}
+  \end{align*}
+
+  \begin{itemize}
+  \item Dynamical matrix is Hermitian
+    \begin{equation*}
+      D_{s\alpha,t\beta}(\boldsymbol{q})
+      =
+      D^*_{t\beta,s\alpha}(\boldsymbol{q})
+    \end{equation*}
+    
+    \begin{block}{\textsc{Proof}}
+      \small
+      \begin{columns}[t]
+        \begin{column}{0.5\textwidth}
+          \begin{align*}
+            D_{s\alpha,t\beta}(\boldsymbol{q})
+            &=
+            {1\over\sqrt{M_sM_t}\,}
+            \sum_l
+            C_{s\alpha,t\beta}(0, l)
+              e^{i\boldsymbol{q}\boldsymbol{x}_l} \cr
+            &= 
+            {1\over\sqrt{M_sM_t}\,}
+            \sum_l
+            C_{s\alpha,t\beta}(\text{-}l, 0)
+              e^{i\boldsymbol{q}\boldsymbol{x}_l} \cr
+            &= 
+            {1\over\sqrt{M_sM_t}\,}
+            \sum_l
+            C_{t\beta,s\alpha}(0, \text{-}l)
+              e^{i\boldsymbol{q}\boldsymbol{x}_l} \cr
+          \end{align*}
+        \end{column}
+        \begin{column}{0.4\textwidth}
+          \begin{align*}
+            D^*_{s\alpha,t\beta}(\boldsymbol{q})
+            &=
+            {1\over\sqrt{M_sM_t}\,}
+            \sum_l
+            C_{t\beta,s\alpha}(0, \text{-}l)
+              e^{\text{-}i\boldsymbol{q}\boldsymbol{x}_l} \cr
+            &=
+            {1\over\sqrt{M_sM_t}\,}
+            \sum_l
+            C_{t\beta,s\alpha}(0, l)
+              e^{i\boldsymbol{q}\boldsymbol{x}_l} \cr
+            &= 
+            D_{t\beta,s\alpha}(\boldsymbol{q})
+          \end{align*}
+        \end{column}
+        
+      \end{columns}
+    \end{block}
+  \end{itemize}
+\end{frame}

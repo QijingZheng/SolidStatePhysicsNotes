@@ -14,7 +14,8 @@
 
   \begin{itemize}
   \item Symmetric
-    \begin{equation*}
+    \begin{equation}
+      \label{eq:ifc_sym_prop}
         \frac{
         \partial^2 E^0_{\text{tot}}
         }{
@@ -28,9 +29,10 @@
         \partial {u}_{t\beta}^k
         \partial {u}_{s\alpha}^j
         }
-    \end{equation*}
-  \item Depend on the difference between $j$ and $k$
-    \begin{equation*}
+    \end{equation}
+  \item Translation invariance, depend on the difference between $j$ and $k$
+    \begin{equation}
+      \label{eq:ifc_ti_prop}
         \frac{
         \partial^2 E^0_{\text{tot}}
         }{
@@ -44,10 +46,11 @@
         \partial {u}_{s\alpha}^0
         \partial {u}_{t\beta}^{(k-j)}
         }
-    \end{equation*}
+    \end{equation}
   \item Acoustic Sum Rule (ASR): if we displace the whole solid by an arbitrary uniform
     displacement, the forces acting on the atoms must be zero.
-    \begin{equation*}
+    \begin{equation}
+      \label{eq:ifc_asr_prop}
       F_{s\alpha}^j =
       - \sum_{\beta}
       \left[
@@ -70,6 +73,6 @@
         \partial {u}_{s\alpha}^j
         \partial {u}_{t\beta}^k
         } = 0
-      \end{equation*}
+      \end{equation}
   \end{itemize}
 \end{frame}
