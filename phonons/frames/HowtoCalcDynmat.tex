@@ -1,0 +1,135 @@
+\begin{frame}
+  \frametitle{How to Calculate the Dynamical Matrix}
+  The definition of the dynamical matrix
+  \begin{equation*}
+    \mathcolor{black}{
+      D_{s\alpha,t\beta}(\boldsymbol{q})
+    }
+    =
+    {1\over\sqrt{M_sM_t}\,}
+    \sum_{l=\text{-}\infty}^{\infty}
+    C_{s\alpha,t\beta}(0, l)
+    e^{i\boldsymbol{q}\boldsymbol{x}_l}
+    \approx
+    {1\over\sqrt{M_sM_t}\,}
+    \sum_{|l| < l_{\text{cut}}}
+    C_{s\alpha,t\beta}(0, l)
+    e^{i\boldsymbol{q}\boldsymbol{x}_l}
+  \end{equation*}
+
+  \begin{itemize}
+  
+  % \item Knowing the IFC $C_{s\alpha,t\beta}(0, l)$, we can get the dynamical matrix at
+  % arbitrary $\boldsymbol{q}$.
+
+  \item Frozen phonon method with a supercell
+    
+    \begin{center}
+        \begin{tikzpicture}
+        [scale=1.0]
+        \foreach \i in {0, 1,...,6}{
+            \foreach \j in {0, 1}{
+            \foreach \x/\y/\c in {0.3/0.3/blue, 0.7/0.7/blue, 0.2/0.8/red, 0.8/0.2/red}{
+                \shade[ball color=\c] (\x + \i, \y + \j) circle (0.08);
+            }
+            }
+        }
+        \draw[help lines, thin, draw=gray] (0, 0) grid (7, 2);
+        \draw[help lines, thick, draw=red] (0, 0) grid (1, 1);
+
+
+        % move one of the atoms
+        \draw[line width=2.0pt, draw=black, densely dotted] (0.6, 0.4) circle (0.08);
+        \shade[ball color=blue!40] (0.6, 0.4) circle (0.08);
+        \draw[solid, draw=YellowGreen, line width=1.0pt, ->, >=stealth] (0.3, 0.3) -- (0.6, 0.4);
+
+        % add the text
+        \node[
+        draw=red, rounded corners=3pt,
+        anchor=north west, align=center
+        ] (move_the_atom_text)
+        at (0.1, -0.1) {
+          \small
+          move atoms in this cell % by a small displacement
+        };
+        \draw[
+        draw=black, line width=0.5pt, ->, >=stealth,
+        out=120, in=-150
+        ]
+        (move_the_atom_text.north west) to (0.2, 0.3);
+
+        \node[
+        draw=blue, rounded corners=3pt,
+        anchor=south east, align=center
+        ] (measure_the_force_text)
+        at (7.0, 2.1) {
+          \small
+          measure the force of this atom
+        };
+        \draw[
+        draw=blue, line width=0.5pt, ->, >=stealth,
+        out=-90, in=120
+        ]
+        (measure_the_force_text.south) to (6.2, 1.8);
+
+        \node[
+        draw=black, rounded corners=3pt,
+        anchor=east, text width=2.0cm, align=center
+        ] (real_ifc)
+        at (-0.5, 1.0) {
+          \small
+          IFC in real space:
+          \begin{equation*}
+            % C_{s\alpha,t\beta}(0, l) =
+            \frac{
+            \partial^2 E^0_{\text{tot}}
+            }{
+            \partial {u}_{s\alpha}^0
+            \partial {u}_{t\beta}^l
+            }
+          \end{equation*}
+        };
+        \end{tikzpicture}
+    \end{center}
+
+    \medskip
+    or
+    \medskip
+    \begin{center}
+        \begin{tikzpicture}
+        [scale=1.0]
+        \foreach \i in {0, 1,...,6}{
+            \foreach \j in {0}{
+            \foreach \x/\y/\c in {0.3/0.3/blue, 0.7/0.7/blue, 0.2/0.8/red, 0.8/0.2/red}{
+                \shade[ball color=\c] (\x + \i, \y + \j) circle (0.08);
+            }
+            }
+        }
+        \draw[help lines, thin, draw=gray] (0, 0) grid (7, 1);
+        % \draw[thin, magenta] (0.0, 0.6) -- (7.0, 0.6);
+        \draw[line width=0.8pt, color=olive, domain=0:7.0, densely dotted] plot[samples=300]
+        (
+        \x, {0.3 + 0.3 * cos((\x - 0.3) * 2. * pi / 7 r)}
+        );
+        \foreach \x in {0,1,...,6}{
+          \pgfmathparse{0.3 * cos((\x) * 2 * pi / 7. r)}
+          \let \y = \pgfmathresult
+          \shade[] (\x +0.3, 0.3 + \y) circle (0.05);
+          \draw[->, >=stealth, thick, magenta] (\x+0.3, 0.3) -- ++(0.0, \y);
+        };
+
+        \node[
+        draw=black, rounded corners=3pt,
+        anchor=east, text width=2.0cm, align=center
+        ] (real_ifc)
+        at (-0.5, 0.5) {
+          \small
+          Dynamical matrix:
+          \begin{equation*}
+            D_{s\alpha,t\beta}(\boldsymbol{q})
+          \end{equation*}
+        };
+        \end{tikzpicture}
+    \end{center}
+  \end{itemize}
+\end{frame}

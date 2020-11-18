@@ -12,12 +12,13 @@
                 }
                 }
             }
-            \foreach \i in {0, 1, 2, 3}{
-                \foreach \j in {0, 1, 2, 3}{
-                    \draw[thin, draw=gray] (\i, \j) -- (3, \j);
-                    \draw[thin, draw=gray] (\j, \i) -- (\j, 3);
-                }
-            }
+            \draw[help lines, thin, draw=gray] (0, 0) grid (3, 3);
+            % \foreach \i in {0, 1, 2, 3}{
+            %     \foreach \j in {0, 1, 2, 3}{
+            %         \draw[thin, draw=gray] (\i, \j) -- (3, \j);
+            %         \draw[thin, draw=gray] (\j, \i) -- (\j, 3);
+            %     }
+            % }
             % move one of the atoms
             \shade[ball color=red!40] (1.6, 2.4) circle (0.08);
 
