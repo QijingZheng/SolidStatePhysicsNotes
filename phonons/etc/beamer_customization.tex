@@ -1,0 +1,59 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Beamer Customization
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Center the frame title
+\setbeamertemplate{frametitle}[default][center]
+\definecolor{MidnightBlue}{rgb}{0.2, 0.2, 0.7}
+\setbeamercolor{frametitle}{fg=white,bg=MidnightBlue}
+\setbeamercolor{block title}{bg=red!30,fg=black}
+
+% change the emphasize font color
+\setbeamercolor{emph}{fg=red}
+\renewcommand<>{\emph}[1]{%
+  {\usebeamercolor[fg]{emph}\only#2{\itshape}#1}%
+}
+
+% Change the FONTSIZE and FONTCOLOR of frametitle
+% \setbeamercolor{frametitle}{fg=blue}
+\setbeamerfont{frametitle}{size=\large}
+\setbeamerfont{institute}{size=\normalsize}
+
+% Customize symbols and colors for items
+% \setbeamertemplate{itemize item}{\color{yellow}$\blacksquare$}
+% \setbeamercolor{itemize subitem}{fg=black}
+
+\setbeamertemplate{itemize/enumerate body begin}{\normalsize}
+\setbeamertemplate{itemize/enumerate subbody}{size=\small}
+\setbeamercolor{itemize/enumerate subbody}{fg=black}
+
+\setbeamertemplate{blocks}[default]
+
+% Change Beamer ALERT color
+% \setbeamercolor{alerted text}{fg=red}
+
+\AtBeginSection[]
+{
+  \begin{frame}<beamer>{Outline}
+    % \tableofcontents[currentsection,currentsubsection]
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+
+%%%%%%%%%%%% add logo to each slide
+% \logo{
+%     \includegraphics[width=0.6cm]{logo.jpg}
+%     \hskip5pt
+%     \includegraphics[height=0.6cm]{name.jpg}
+%     \hskip2in
+% }
+
+%%%%%%%%%%%% add logo to each frame title
+% \addtobeamertemplate{frametitle}{}{%
+% \begin{tikzpicture}[remember picture,overlay]
+%     \node[anchor=north east,yshift=2pt] at (current page.south west) {
+%       \includegraphics[height=1.0cm]{logo.jpg}
+%       \hskip5pt
+%       \includegraphics[height=1.0cm]{name.jpg}
+%     };
+% \end{tikzpicture}
+% }

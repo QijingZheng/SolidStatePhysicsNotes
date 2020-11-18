@@ -1,0 +1,62 @@
+\usetheme{Madrid}
+% \usecolortheme{beaver}
+\usepackage{tikz}
+\usetikzlibrary{
+    arrows,
+    positioning,
+    calc,
+    arrows,
+    decorations.pathmorphing,
+    intersections,
+    shapes,
+    snakes,
+    datavisualization
+}
+\tikzstyle{every picture}+=[remember picture]
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.16} 
+
+% \usepackage[
+%    % bottom,
+%    % flushmargin,
+%    % hang,
+%    % multiple
+% ]{footmisc}
+
+\usepackage[font={small,sf},labelfont={bf},labelsep=endash]{caption}
+\usepackage{sansmath}
+\usepackage{mathtools}
+\usepackage{xcolor}
+% \usepackage[usenames, dvipsnames]{color}
+\usepackage{graphicx}
+\graphicspath{{figs/}}
+\usepackage{framed}
+\usepackage{amsmath,amssymb}
+\usepackage{siunitx}
+\usepackage{mathabx}
+\usepackage{tasks}
+\usepackage{multicol}
+\usepackage{braket}
+\usepackage{tikz}
+\usetikzlibrary{mindmap}
+\usepackage{ifthen}
+
+\usepackage{datetime}
+\yyyymmdddate
+% \renewcommand{\dateseparator}{-}
+
+\makeatletter
+\def\mathcolor#1#{\@mathcolor{#1}}
+\def\@mathcolor#1#2#3{%
+  \protect\leavevmode
+  \begingroup
+    \color#1{#2}#3%
+  \endgroup
+}
+\makeatother
+
+\makeatletter
+\let\@@magyar@captionfix
+\relax\makeatother
+
+% \usefonttheme[onlymath]{serif}

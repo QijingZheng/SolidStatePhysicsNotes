@@ -1,0 +1,103 @@
+\begin{frame}
+  \frametitle{3D Lattice Dynamics}
+  Within the harmonic approximation, the Newton's equation for the atom $s$ in
+  cell $j$
+  \begin{equation}
+    \label{eq:3d_newton_equation}
+    M_s \frac{\mathrm{d}^2 {u}_{j\alpha}^s(t)}{\mathrm{d}t^2} = -\frac{\partial E_{\text{tot}}}{\partial {u}_{j\alpha}^s} = 
+    - \sum_{kt\beta}
+    \mathcolor{Orange}
+    {
+    \frac{
+      \partial^2 E^0_{\text{tot}}
+    }{
+      \partial {u}_{j\alpha}^s
+      \partial {u}_{k\beta}^t
+    }
+    }
+    {{u}_{k\beta}^t}
+    =
+    - \sum_{kt\beta}
+    \mathcolor{Orange}
+    {
+    C_{s\alpha, t\beta}(k-j)
+    }
+    \,{{u}_{k\beta}^t}
+  \end{equation}
+  The ansatz of the solution
+  \begin{equation}
+    \label{eq:3d_solution_ansatz}
+    {u}_{j\alpha}^s(t) = {\eta^s_\alpha(\boldsymbol{q}) \over \sqrt{M_s}} \,e^{i\boldsymbol{q}\mathcolor{red}{\boldsymbol{x}_j}} \,e^{- i\omega t}
+  \end{equation}
+  Substitute Eq.~\ref{eq:3d_solution_ansatz} into Eq.~\ref{eq:3d_newton_equation}
+  \begin{equation*}
+    \omega^2(\boldsymbol{q}) \,\eta_\alpha^s = \sum_{t\beta}
+    \left[
+      {\mathcolor{blue}{\sum_k}}
+      \mathcolor{blue}{
+        {1\over\sqrt{M_sM_t}\,}
+        \frac{
+        \partial^2 E^0_{\text{tot}}
+        }{
+        \partial \boldsymbol{u}_{j\alpha}^s
+        \partial \boldsymbol{u}_{k\beta}^t
+        } \, e^{i\boldsymbol{q}(\boldsymbol{x}_k - \boldsymbol{x}_j)}
+      }
+    \right]
+    \eta^t_\beta
+    =
+    \sum_{t\beta}
+    \mathcolor{blue}{
+      D_{s\alpha,t\beta}(\boldsymbol{q})
+    }
+    \, \eta^t_\beta
+  \end{equation*}
+
+  In matrix form
+  \begin{equation*}
+    \underline{
+    \begin{pmatrix}
+      \renewcommand*{\arraystretch}{1.5}
+      \ddots & \phantom{A} & \phantom{A} \\
+      \phantom{A} & D_{s\alpha,t\beta}(\boldsymbol{q})& \phantom{A} \\
+      \phantom{A} & \tikzmark{Dmatrix}  \phantom{A} & \ddots
+    \end{pmatrix}
+    }
+    \begin{pmatrix}
+      \renewcommand*{\arraystretch}{1.5}
+      \vdots \\
+      \eta^t_\beta(\boldsymbol{q}) \\
+      \vdots
+    \end{pmatrix}
+    = \omega^2(\boldsymbol{q})
+    \underline{
+    \begin{pmatrix}
+      \renewcommand*{\arraystretch}{1.5}
+      \vdots \\
+      \eta^t_\beta(\boldsymbol{q}) \\
+      \vdots \tikzmark{EigenVector1}
+    \end{pmatrix}
+    }
+    % \qquad 
+    % \begin{aligned}
+    %   s,t &=1,\ldots,N_a;\cr
+    %   \alpha,\beta&=x,y,z
+    % \end{aligned}
+  \end{equation*}
+
+  \begin{tikzpicture}
+    [overlay, remember picture]
+    % \draw[] (Dmatrix) circle (10pt);
+    \node[below=6pt of Dmatrix, align=center]
+    (Dmatrix_note) {
+      $3N_a \times 3N_a$
+    };
+    \node[below=6pt of EigenVector1, align=center]
+    (eigenvec_note) {
+      $3N_a$
+    };
+  \end{tikzpicture}
+
+  \bigskip
+  where $N_a$ is the number of atoms in a cell.
+\end{frame}

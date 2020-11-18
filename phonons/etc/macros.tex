@@ -1,0 +1,87 @@
+\newcommand{\angstrom}{\text{\normalfont\AA}}
+\newcommand{\abinitio}[0]{\textit{ab initio}}
+\newcommand{\schro}[0]{Schr\"odinger}
+
+\newcommand{\rt}{(\mathbf{r},t)}
+\newcommand{\rR}{(\mathbf{r},\mathbf{R})}
+\newcommand{\prR}{(\mathbf{r};\mathbf{R})}
+\newcommand{\Rt}{(\mathbf{R},t)}
+\newcommand{\rRt}{(\mathbf{r},\mathbf{R},t)}
+\newcommand{\hamil}[0]{\hat{\cal H}}
+\newcommand{\rvec}[0]{\mathbf{r}}
+\newcommand{\svec}[0]{\mathbf{s}}
+\newcommand{\Rvec}[0]{\mathbf{R}}
+
+\newcommand{\dt}[1]{\mathrm{d}#1}
+\newcommand{\onehalf}[0]{\frac{1}{2}}
+
+\newcommand{\BOsup}[0]{\textnormal{\tiny BO}}
+% \newcommand{\action}{{\cal A}}
+
+\newcommand{\EYSR}{Elliot-Yafet}
+\newcommand{\DPSR}{D'yakonov-Perel'}
+
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\Im}{\operatorname{Im}}
+\newcommand{\tr}{\operatorname{tr}}
+% \DeclareMathOperator{\Hom}{Hom}
+
+\newcommand{\shortminus}{\text{-}}
+
+\makeatletter
+\newcommand*{\rom}[1]{\expandafter\@slowromancap\romannumeral #1@}
+\makeatother
+
+\newcommand*{\info}[4][16.3]{%
+  \node[
+  annotation, #3, scale=0.65, text width = #1em,
+  inner sep = 6pt
+  ] at (#2) {%
+  \list{$\bullet$}{\topsep=0pt\itemsep=0pt\parsep=0pt
+    \parskip=0pt\labelwidth=8pt\leftmargin=8pt
+    \itemindent=0pt\labelsep=2pt}%
+    #4
+  \endlist
+  };
+}
+
+\newcommand{\tikzmark}[1]{\tikz[baseline,remember picture] \coordinate (#1) {};}
+\newcommand{\tikzremember}[2]{
+  \tikz[baseline,inner sep=0] \node[anchor=base] (#1) {#2};
+}
+
+\makeatletter
+\renewcommand*\env@matrix[1][\arraystretch]{%
+  \edef\arraystretch{#1}%
+  \hskip -\arraycolsep
+  \let\@ifnextchar\new@ifnextchar
+  \array{*\c@MaxMatrixCols c}}
+\makeatother
+
+\newcommand*\colvec[3][]{
+    \begin{pmatrix}[1.2]\ifx\relax#1\relax\else#1\\\fi#2\\#3\end{pmatrix}
+}
+
+\newenvironment {annotatedFigure}[1]{
+  \centering
+  \begin{tikzpicture}
+    \node[anchor=south west,inner sep=0] (image) at (0,0) {#1};
+        \begin{scope}[x={(image.south east)},y={(image.north west)}]}
+    {\end{scope}
+  \end{tikzpicture}}
+
+\newcommand{\zjball}[2][1.5pt]{
+    \tikz[baseline=(current bounding box.south)] \shade[
+        shading=ball, ball color=#2,
+    ] (0.0, 0.0) circle (#1);
+}
+
+\makeatletter
+\def\mathcolor#1#{\@mathcolor{#1}}
+\def\@mathcolor#1#2#3{%
+  \protect\leavevmode
+  \begingroup
+    \color#1{#2}#3%
+  \endgroup
+}         
+\makeatother
