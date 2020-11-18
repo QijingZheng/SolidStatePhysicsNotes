@@ -4,30 +4,30 @@
   cell $j$
   \begin{equation}
     \label{eq:3d_newton_equation}
-    M_s \frac{\mathrm{d}^2 {u}_{j\alpha}^s(t)}{\mathrm{d}t^2} = -\frac{\partial E_{\text{tot}}}{\partial {u}_{j\alpha}^s} = 
+    M_s \frac{\mathrm{d}^2 {u}_{s\alpha}^j(t)}{\mathrm{d}t^2} = -\frac{\partial E_{\text{tot}}}{\partial {u}_{s\alpha}^j} = 
     - \sum_{kt\beta}
     \mathcolor{Orange}
     {
     \frac{
       \partial^2 E^0_{\text{tot}}
     }{
-      \partial {u}_{j\alpha}^s
-      \partial {u}_{k\beta}^t
+      \partial {u}_{s\alpha}^j
+      \partial {u}_{t\beta}^k
     }
     }
-    {{u}_{k\beta}^t}
+    {{u}_{t\beta}^k}
     =
     - \sum_{kt\beta}
     \mathcolor{Orange}
     {
-    C_{s\alpha, t\beta}(k-j)
+    C_{s\alpha, t\beta}(j, k)
     }
-    \,{{u}_{k\beta}^t}
+    \,{{u}_{t\beta}^k}
   \end{equation}
   The ansatz of the solution
   \begin{equation}
     \label{eq:3d_solution_ansatz}
-    {u}_{j\alpha}^s(t) = {\eta^s_\alpha(\boldsymbol{q}) \over \sqrt{M_s}} \,e^{i\boldsymbol{q}\mathcolor{red}{\boldsymbol{x}_j}} \,e^{- i\omega t}
+    {u}_{s\alpha}^j(t) = {\eta^s_\alpha(\boldsymbol{q}) \over \sqrt{M_s}} \,e^{i\boldsymbol{q}\mathcolor{red}{\boldsymbol{x}_j}} \,e^{- i\omega t}
   \end{equation}
   Substitute Eq.~\ref{eq:3d_solution_ansatz} into Eq.~\ref{eq:3d_newton_equation}
   \begin{equation*}
@@ -39,8 +39,8 @@
         \frac{
         \partial^2 E^0_{\text{tot}}
         }{
-        \partial \boldsymbol{u}_{j\alpha}^s
-        \partial \boldsymbol{u}_{k\beta}^t
+        \partial {u}_{s\alpha}^j
+        \partial {u}_{t\beta}^k
         } \, e^{i\boldsymbol{q}(\boldsymbol{x}_k - \boldsymbol{x}_j)}
       }
     \right]

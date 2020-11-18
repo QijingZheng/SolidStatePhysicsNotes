@@ -28,10 +28,10 @@
             (1.0, 2.0) --  node[above, pos=0.2] {\textcolor{YellowGreen}{$\boldsymbol{d}_s$}} (1.8, 2.2);
 
             \draw[solid, draw=Violet, line width=0.5pt, ->, >=stealth]
-            (1.8, 2.2) -- node[above=3pt, pos=0.5, anchor=west] {\textcolor{Violet}{$\boldsymbol{u}_{j}^s$}} (1.6, 2.4);
+            (1.8, 2.2) -- node[above=3pt, pos=0.5, anchor=west] {\textcolor{Violet}{$\boldsymbol{u}^j_s$}} (1.6, 2.4);
 
             \draw[solid, draw=black, line width=0.5pt, ->, >=stealth]
-            (0.0, 0.0) -- node[below=5pt, pos=0.78] {$\boldsymbol{R}_{j}^s$} (1.6, 2.4);
+            (0.0, 0.0) -- node[below=5pt, pos=0.78] {$\boldsymbol{R}^j_s$} (1.6, 2.4);
 
             \end{tikzpicture}
         \end{center}
@@ -41,13 +41,13 @@
       \begin{itemize}
       \item $\boldsymbol{x}_j$: the position of unit cell $j$
       \item $\boldsymbol{d}_s$: the equilibrum position of the atom $s$ in the cell
-      \item $\boldsymbol{u}_{j}^s$: displacement from the equilibrum positon for the atom $s$ in the cell $j$
-      \item $\boldsymbol{R}_{j}^s$: the position of the atom $s$ in the cell $j$
+      \item $\boldsymbol{u}^j_s$: displacement from the equilibrum positon for the atom $s$ in the cell $j$
+      \item $\boldsymbol{R}^j_s$: the position of the atom $s$ in the cell $j$
         \begin{align*}
-          \boldsymbol{R}_{j}^s(t) &= \boldsymbol{x}_j + \boldsymbol{d}_s
-                                + \boldsymbol{u}_{j}^s(t) \cr
-                                  &= \boldsymbol{r}_j^s + \boldsymbol{u}_{j}^s(t)  \cr
-          {R}_{j\alpha}^s(t) &= {r}_{j\alpha}^s + {u}_{j\alpha}^s(t) 
+          \boldsymbol{R}^j_s(t) &= \boldsymbol{x}_j + \boldsymbol{d}_s
+                                + \boldsymbol{u}^j_s(t) \cr
+                                  &= \boldsymbol{r}^j_s + \boldsymbol{u}^j_s(t)  \cr
+          {R}_{s\alpha}^j(t) &= {r}_{s\alpha}^j + {u}_{s\alpha}^j(t) 
           \quad (\alpha= x,y,z)
         \end{align*}
       \end{itemize}
@@ -57,21 +57,21 @@
   \bigskip
   The total energy can be written as
   \begin{equation*}
-    E_{\text{tot}}\left(\{\boldsymbol{R}_j^s(t)\}\right) = 
-    E^0_{\text{tot}}\left(\{\boldsymbol{r}_j^s\}\right) +
+    E_{\text{tot}}\left(\{\boldsymbol{R}^j_s(t)\}\right) = 
+    E^0_{\text{tot}}\left(\{\boldsymbol{r}^j_s\}\right) +
     \sum_{js\alpha} \frac{
-      \partial E^0_{\text{tot}} % \left(\{\mathrm{r}_j^s\}\right)
+      \partial E^0_{\text{tot}} % \left(\{\mathrm{r}^j_s\}\right)
     }{
-      \partial {u}_{j\alpha}^s
-    } {{u}_{j\alpha}^s} +
+      \partial {u}_{s\alpha}^j
+    } {{u}_{s\alpha}^j} +
     {1\over2} \sum_{\substack{js\alpha \\ kt\beta}}
     \frac{
-      \partial^2 E^0_{\text{tot}} % \left(\{\mathrm{r}_j^s\}\right)
+      \partial^2 E^0_{\text{tot}} % \left(\{\mathrm{r}^j_s\}\right)
     }{
-      \partial {u}_{j\alpha}^s
-      \partial {u}_{k\beta}^t
+      \partial {u}_{s\alpha}^j
+      \partial {u}_{t\beta}^k
     } \tikzmark{IFC}
-    {{u}_{j\alpha}^s} {{u}_{k\beta}^t}
+    {{u}_{s\alpha}^j} {{u}_{t\beta}^k}
     + \ldots
        % \quad (\alpha,\beta = x,y,z)
   \end{equation*}
@@ -88,12 +88,12 @@
   \begin{itemize}
   \item The expression is exact if we take all the orders in the expansion.
   \item All the derivatives are taken at the equilibrium positions
-    $\{\boldsymbol{r}_j^s\}$, i.e. $
+    $\{\boldsymbol{r}^j_s\}$, i.e. $
     \frac{
       \partial E^0_{\text{tot}}
     }{
       \partial
-      {u}_{j\alpha}^s
+      {u}_{s\alpha}^j
     }=0$. 
   \item Harmonic approximation: truncated at \emph{second} order.
   \end{itemize}

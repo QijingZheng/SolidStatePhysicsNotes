@@ -1,6 +1,6 @@
 \begin{frame}
   \frametitle{1D Chain of Atoms --- 2 Atoms per Unit}
-  A 1D chain with 2 atoms in each unit: $R_{j}^s(t) = x_j + d_s + u_{j}^s(t);\quad s=1,2$
+  A 1D chain with 2 atoms in each unit: $R^{j}_s(t) = x_j + d_s + u^{j}_s(t);\quad s=1,2$
   \begin{center}
     \begin{tikzpicture}
       [
@@ -58,8 +58,8 @@
 
   \begin{equation*}
     \begin{aligned}
-      M_1 \frac{\mathrm{d}^2 u_{j}^1}{\mathrm{d}t^2} &= K (u_{j}^2 + u_{j-1}^2 - 2u_{j}^1) \cr
-      M_2 \frac{\mathrm{d}^2 u_{j}^2}{\mathrm{d}t^2} &= K (u_{j}^1 + u_{j+1}^1 - 2u_{j}^2)
+      M_1 \frac{\mathrm{d}^2 u^{j}_1}{\mathrm{d}t^2} &= K (u^{j}_2 + u^{j-1}_2 - 2u^{j}_1) \cr
+      M_2 \frac{\mathrm{d}^2 u^{j}_2}{\mathrm{d}t^2} &= K (u^{j}_1 + u^{j+1}_1 - 2u^{j}_2)
     \end{aligned}
     \quad \Longrightarrow \quad% (j=1,\ldots,N)
     % \tikz \draw [->, >=stealth, blue, line width=0.5pt] (0, 0) -- node[above, midway]{$t \to \tau= i\beta\hbar$} (2.5, 0.0);
