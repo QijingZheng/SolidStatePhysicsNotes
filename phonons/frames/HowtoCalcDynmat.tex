@@ -18,12 +18,12 @@
     e^{i\boldsymbol{q}\boldsymbol{x}_l}
   \end{equation}
 
-  \begin{itemize}
+  \begin{enumerate}
   
   % \item Knowing the IFC $C_{s\alpha,t\beta}(0, l)$, we can get the dynamical matrix at
   % arbitrary $\boldsymbol{q}$.
 
-  \item Frozen phonon method with a supercell
+  \item Finite-difference and supercell approach --- Frozen phonon method
     
     \begin{center}
         \begin{tikzpicture}
@@ -109,6 +109,9 @@
     \end{center}
 
     \begin{itemize}
+    \setbeamercolor{local structure}{fg=red}
+    \item Supercell must be large enough so that IFC is negligible at the cell
+      boundary.
     \item Movements done \emph{only} in one primitive cell.
       
     \item $3\times N_a\times 2$ movements, i.e. move by $\pm \Delta$ in
@@ -169,7 +172,7 @@
         ] (move_the_atom_text_2)
         at (0.1, -0.1) {
           \small
-          move atom $s$ in cell $l$ by $\Delta e^{\text{-}i\boldsymbol{q}\boldsymbol{x}_l}$
+          move atom $s$ in cell $l$ by $\Delta_{s,\boldsymbol{q}}\, e^{\text{-}i\boldsymbol{q}\boldsymbol{x}_l}$
         };
         \draw[
         draw=black, line width=0.5pt, ->, >=stealth,
@@ -225,81 +228,94 @@
     \end{center}
 
     \begin{itemize}
+    \setbeamercolor{local structure}{fg=red}
     \item Can only obtain dynamical matrix at certain $\boldsymbol{q}$.
+        \begin{center}
+        \resizebox{0.8\textwidth}{!}{
+        \begin{tikzpicture}
+            % the real-space cell
+            \draw[help lines, thin] (0, 0) grid +(1, 1);
+            \draw[help lines, thin] (-2, -3) grid +(3, 2);
+            \draw[->, >=stealth, thin, draw=gray]
+            (-2, -3.2) --
+            node[pos=0.5, below, anchor=north] {$\times 3$}
+            (1, -3.2);
+            \draw[->, >=stealth, thin, draw=gray]
+            (-2.2, -3.0) --
+            node[pos=0.5, left, anchor=east] {$\times 2$}
+            (-2.2, -1.0);
+
+            % the primitive BZ
+            \draw[help lines, thin] (3.0, 0.0) rectangle +(1.5, 1.5);
+            \draw[help lines, thin, draw=red] (2.25, -0.75) rectangle +(1.5, 1.5);
+
+            % supercell BZ
+            \draw[help lines, thin] (3.0, -3.0) rectangle +(1.5, 1.5);
+            \draw[help lines, thin, draw=red] (2.25, -3.75) rectangle +(1.5, 1.5);
+            \draw[help lines, line width=1pt, draw=blue] (3.0, -3.0) rectangle +(0.5, 0.75);
+
+            \draw[thin, draw=gray] (3.0, -2.25) -- (4.5, -2.25);
+            \foreach \i in {0, 1, 2, 3}{
+            \draw[thin, draw=gray] (3.0 + \i * 0.5, -3) -- (3.0 + \i * 0.5, -1.5);
+            }
+
+            \node[align=right, anchor=east, gray] at (0.0, 0.5) {Primitive Cell (PC)};
+            \node[align=center, anchor=center, gray] at (-0.5, -0.5) {Supercell (SC)};
+            \node[align=center, anchor=center, red] at (3.0, -1.0) {PC Brillouin Zone};
+            \node[align=center, anchor=south, gray] at (3.0, 1.5) {PC Reciprocal Cell};
+            \node[align=center, anchor=north, blue] at (3.0, -3.75) {SC Reciprocal Cell};
+
+            \shade[ball color=red] (3.0, 0.0) circle (0.05);
+            \node[anchor=south west, align=left] at (3.0, 0.0) {$\Gamma$};
+
+            \shade[ball color=red] (3.0, -3.0) circle (0.05);
+            \node[anchor=north east, align=center] at (3.0, -3.0) {$\large q_1$};
+
+            \shade[ball color=red] (3.0+1./2, -3.0) circle (0.05);
+            \node[anchor=north west, align=center] at (3.0+1./2, -3.0) {$\large q_2$};
+
+            \shade[ball color=red] (3.0, -2.25) circle (0.05);
+            \node[anchor=south east, align=center] at (3.0, -2.25) {$\large q_3$};
+
+            \shade[ball color=red] (3.0+1./2, -2.25) circle (0.05);
+            \node[anchor=south west, align=center] at (3.0+1./2, -2.25) {$\large q_4$};
+
+            \foreach \x/\y/\l in {6/-3.5/$q_1$, 6/-0.5/$q_3$, 10.5/-3.5/$q_2$, 10.5/-0.5/$q_4$}{
+            \foreach \i in {0,1,2,3}{
+                \foreach \j in {0,1,2}{
+                \draw[thin, draw=gray] (\i + \x, 0 + \y) -- (\i + \x, 2 + \y);
+                \draw[thin, draw=gray] (0 + \x, \j + \y) -- (3 + \x, \j + \y);
+                \shade[ball color=red] (\x + \i, \y + \j) circle (0.06);
+                \node[left=0.04, anchor=east] at (\x, \y) {\Large \l};
+                }
+            }
+            }
+
+            \foreach \x/\y/\qx/\qy in {6/-3.5/0/0, 6/-0.5/0/0.5, 10.5/-3.5/0.333333333/0, 10.5/-0.5/0.333333333/0.5}{
+            \foreach \i in {0,1,2,3}{
+                \foreach \j in {0,1,2}{
+                \pgfmathparse{0.4 * cos((\i *\qx * 2 * pi + \j * \qy * 2 * pi) r)}
+                \let \A = \pgfmathresult
+                \draw[->, >=stealth, thick, magenta] (\x+\i, \y+\j) -- ++(0.0, \A);
+                }
+            }
+            }
+        \end{tikzpicture}
+        }
+        \end{center}
+
+    \item $D_{s\alpha, t\beta}(\boldsymbol{q})$
+        \tikz\draw[->, >=stealth, blue, line width=0.5pt]
+        (0, 0) -- node [above] {FT} (1.0, 0.0);
+        $C_{s\alpha, t\beta}^{0, l}$
+        \tikz\draw[->, >=stealth, blue, line width=0.5pt]
+        (0, 0) -- node [above] {Eq.~\ref{eq:dynmat_howto}} (1.0, 0.0);
+        $D_{s\alpha, t\beta}(\boldsymbol{k})$
     \end{itemize}
-
-    \begin{center}
-      \resizebox{0.8\textwidth}{!}{
-      \begin{tikzpicture}
-        % the real-space cell
-        \draw[help lines, thin] (0, 0) grid +(1, 1);
-        \draw[help lines, thin] (-2, -3) grid +(3, 2);
-        \draw[->, >=stealth, thin, draw=gray]
-        (-2, -3.2) --
-        node[pos=0.5, below, anchor=north] {$\times 3$}
-        (1, -3.2);
-        \draw[->, >=stealth, thin, draw=gray]
-        (-2.2, -3.0) --
-        node[pos=0.5, left, anchor=east] {$\times 2$}
-        (-2.2, -1.0);
-
-        % the primitive BZ
-        \draw[help lines, thin] (3.0, 0.0) rectangle +(1.5, 1.5);
-        \draw[help lines, thin, draw=red] (2.25, -0.75) rectangle +(1.5, 1.5);
-
-        % supercell BZ
-        \draw[help lines, thin] (3.0, -3.0) rectangle +(1.5, 1.5);
-        \draw[help lines, thin, draw=red] (2.25, -3.75) rectangle +(1.5, 1.5);
-        \draw[help lines, thin, draw=blue] (3.0, -3.0) rectangle +(0.5, 0.75);
-
-        \draw[thin, draw=gray] (3.0, -2.25) -- (4.5, -2.25);
-        \foreach \i in {0, 1, 2, 3}{
-          \draw[thin, draw=gray] (3.0 + \i * 0.5, -3) -- (3.0 + \i * 0.5, -1.5);
-        }
-
-        \node[align=right, anchor=east, gray] at (0.0, 0.5) {Primitive Cell (PC)};
-        \node[align=center, anchor=center, gray] at (-0.5, -0.5) {Supercell (SC)};
-        \node[align=center, anchor=center, red] at (3.0, -1.0) {PC Brillouin Zone};
-        \node[align=center, anchor=south, gray] at (3.0, 1.5) {PC Reciprocal Cell};
-        \node[align=center, anchor=north, blue] at (3.0, -3.75) {SC Reciprocal Cell};
-
-        \shade[ball color=blue] (3.0, 0.0) circle (0.04);
-        \node[anchor=south west, align=left] at (3.0, 0.0) {$\Gamma$};
-
-        \shade[ball color=blue] (3.0, -3.0) circle (0.04);
-        \node[anchor=north east, align=center] at (3.0, -3.0) {$q_1$};
-
-        \shade[ball color=blue] (3.0+1./2, -3.0) circle (0.04);
-        \node[anchor=north west, align=center] at (3.0+1./2, -3.0) {$q_2$};
-
-        \shade[ball color=blue] (3.0, -2.25) circle (0.04);
-        \node[anchor=south east, align=center] at (3.0, -2.25) {$q_3$};
-
-        \shade[ball color=blue] (3.0+1./2, -2.25) circle (0.04);
-        \node[anchor=south west, align=center] at (3.0+1./2, -2.25) {$q_4$};
-
-        \foreach \x/\y/\l in {6/-3.5/$q_1$, 6/-0.5/$q_3$, 10.5/-3.5/$q_2$, 10.5/-0.5/$q_4$}{
-          \foreach \i in {0,1,2,3}{
-            \foreach \j in {0,1,2}{
-              \draw[thin, draw=gray] (\i + \x, 0 + \y) -- (\i + \x, 2 + \y);
-              \draw[thin, draw=gray] (0 + \x, \j + \y) -- (3 + \x, \j + \y);
-              \shade[ball color=red] (\x + \i, \y + \j) circle (0.06);
-              \node[left=0.04, anchor=east] at (\x, \y) {\l};
-            }
-          }
-        }
-
-        \foreach \x/\y/\qx/\qy in {6/-3.5/0/0, 6/-0.5/0/0.5, 10.5/-3.5/0.333333333/0, 10.5/-0.5/0.333333333/0.5}{
-          \foreach \i in {0,1,2,3}{
-            \foreach \j in {0,1,2}{
-              \pgfmathparse{0.4 * cos((\i *\qx * 2 * pi + \j * \qy * 2 * pi) r)}
-              \let \A = \pgfmathresult
-              \draw[->, >=stealth, thick, magenta] (\x+\i, \y+\j) -- ++(0.0, \A);
-            }
-          }
-        }
-      \end{tikzpicture}
-      }
-    \end{center}
-  \end{itemize}
+  \end{enumerate}
 \end{frame}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
