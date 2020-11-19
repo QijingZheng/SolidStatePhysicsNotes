@@ -9,7 +9,7 @@
       \partial {u}_{t\beta}^k
     }
     =
-    C_{s\alpha, t\beta}(j, k)
+    C_{s\alpha, t\beta}^{j, k}
   \end{equation*}
 
   \begin{itemize}
@@ -29,6 +29,10 @@
         \partial {u}_{t\beta}^k
         \partial {u}_{s\alpha}^j
         }
+        \quad \Rightarrow \quad
+        C_{s\alpha, t\beta}^{j, k}
+        =
+        C_{t\beta, s\alpha}^{k, j}
     \end{equation}
   \item Translation invariance, depend on the difference between $j$ and $k$
     \begin{equation}
@@ -46,6 +50,10 @@
         \partial {u}_{s\alpha}^0
         \partial {u}_{t\beta}^{(k-j)}
         }
+        \quad \Rightarrow \quad
+        C_{s\alpha, t\beta}^{j, k}
+        =
+        C_{s\alpha, t\beta}^{0, k-j}
     \end{equation}
   \item Acoustic Sum Rule (ASR): if we displace the whole solid by an arbitrary uniform
     displacement, the forces acting on the atoms must be zero.

@@ -1,21 +1,22 @@
-\begin{frame}
+\begin{frame}[allowframebreaks]
   \frametitle{How to Calculate the Dynamical Matrix}
   The definition of the dynamical matrix
-  \begin{equation*}
+  \begin{equation}
+    \label{eq:dynmat_howto}
     \mathcolor{black}{
       D_{s\alpha,t\beta}(\boldsymbol{q})
     }
     =
     {1\over\sqrt{M_sM_t}\,}
     \sum_{l=\text{-}\infty}^{\infty}
-    C_{s\alpha,t\beta}(0, l)
+    C_{s\alpha,t\beta}^{0, l}\,
     e^{i\boldsymbol{q}\boldsymbol{x}_l}
     \approx
     {1\over\sqrt{M_sM_t}\,}
     \sum_{|l| < l_{\text{cut}}}
-    C_{s\alpha,t\beta}(0, l)
+    C_{s\alpha,t\beta}^{0, l}\,
     e^{i\boldsymbol{q}\boldsymbol{x}_l}
-  \end{equation*}
+  \end{equation}
 
   \begin{itemize}
   
@@ -35,7 +36,7 @@
             }
         }
         \draw[help lines, thin, draw=gray] (0, 0) grid (7, 2);
-        \draw[help lines, thick, draw=red] (0, 0) grid (1, 1);
+        \draw[help lines, thick, dashed, draw=red] (0, 0) grid (1, 1);
 
 
         % move one of the atoms
@@ -74,39 +75,71 @@
 
         \node[
         draw=black, rounded corners=3pt,
-        anchor=east, text width=2.0cm, align=center
+        anchor=east,
+        align=center,
+        % text width=2.4cm,
+        % inner sep=1ex
         ] (real_ifc)
         at (-0.5, 1.0) {
-          \small
-          IFC in real space:
-          \begin{equation*}
-            % C_{s\alpha,t\beta}(0, l) =
-            \frac{
-            \partial^2 E^0_{\text{tot}}
-            }{
-            \partial {u}_{s\alpha}^0
-            \partial {u}_{t\beta}^l
-            }
-          \end{equation*}
+          \begin{minipage}[t]{0.3\linewidth}
+            \small IFC by finite-difference:
+            \begin{gather*}
+              \frac{
+                \partial^2 E^0_{\text{tot}}
+              }{
+                \partial u_{s\alpha}^0
+                \partial u_{t\beta}^l
+              } =
+              \frac{
+                \partial F^l_{t\beta}
+              }{
+                \partial u^0_{s\alpha}
+              } \cr
+              \approx
+              \frac{
+                F^l_{t\beta}(\Delta_{s\alpha}) - 
+                F^l_{t\beta}(\text{-}\Delta_{s\alpha}) 
+              }{
+                2\Delta_{s\alpha}
+              }
+            \end{gather*}
+          \end{minipage}
         };
         \end{tikzpicture}
     \end{center}
 
-    \medskip
-    or
-    \medskip
+    \begin{itemize}
+    \item Movements done \emph{only} in one primitive cell.
+      
+    \item $3\times N_a\times 2$ movements, i.e. move by $\pm \Delta$ in
+      $x/y/z$ directions for each atom in the primitive cell.
+      % where $3$ is due to
+      % movements in $x,y,z$ directions and $2$ comes from the second order finite
+      % difference.
+      
+    \item Symmetry can be adopted to reduce the number of movements.
+      % \footnote{
+      %   1. Alfè D. PHON: A program to calculate phonons using the small displacement method. Comput Phys Commun [Prieiga per internetą]. 2009 m. gruodžio;180(12):2622–33. Available at: http://dx.doi.org/10.1016/j.cpc.2009.03.010
+      % }
+
+    \item The dynamical matrix can then be obtained at arbitrary
+      $\boldsymbol{q}$ by Eq.~\ref{eq:dynmat_howto}.
+
+    \end{itemize}
+
+    \break
     \begin{center}
         \begin{tikzpicture}
         [scale=1.0]
         \foreach \i in {0, 1,...,6}{
-            \foreach \j in {0}{
+            \foreach \j in {0, 1}{
             \foreach \x/\y/\c in {0.3/0.3/blue, 0.7/0.7/blue, 0.2/0.8/red, 0.8/0.2/red}{
                 \shade[ball color=\c] (\x + \i, \y + \j) circle (0.08);
             }
             }
         }
-        \draw[help lines, thin, draw=gray] (0, 0) grid (7, 1);
-        % \draw[thin, magenta] (0.0, 0.6) -- (7.0, 0.6);
+        \draw[help lines, thin, draw=gray] (0, 0) grid (7, 2);
+
         \draw[line width=0.8pt, color=olive, domain=0:7.0, densely dotted] plot[samples=300]
         (
         \x, {0.3 + 0.3 * cos((\x - 0.3) * 2. * pi / 7 r)}
@@ -118,18 +151,155 @@
           \draw[->, >=stealth, thick, magenta] (\x+0.3, 0.3) -- ++(0.0, \y);
         };
 
+        \draw[line width=0.8pt, color=olive, domain=0:7.0, densely dotted] plot[samples=300]
+        (
+        \x, {1.3 + 0.3 * cos((\x - 0.3) * 2. * pi / 7 r)}
+        );
+        \foreach \x in {0,1,...,6}{
+          \pgfmathparse{0.3 * cos((\x) * 2 * pi / 7. r)}
+          \let \y = \pgfmathresult
+          \shade[] (\x +0.3, 1.3 + \y) circle (0.05);
+          \draw[->, >=stealth, thick, magenta] (\x+0.3, 1.3) -- ++(0.0, \y);
+        };
+
+        % add the text
+        \node[
+        draw=red, rounded corners=3pt,
+        anchor=north west, align=center
+        ] (move_the_atom_text_2)
+        at (0.1, -0.1) {
+          \small
+          move atom $s$ in cell $l$ by $\Delta e^{\text{-}i\boldsymbol{q}\boldsymbol{x}_l}$
+        };
+        \draw[
+        draw=black, line width=0.5pt, ->, >=stealth,
+        out=120, in=-150
+        ]
+        (move_the_atom_text_2.north west) to (0.2, 0.3);
+
+        \draw[help lines, thick, dashed, draw=red] (4, 1) grid +(1, 1);
+        \node[
+        draw=blue, rounded corners=3pt,
+        anchor=south east, align=center
+        ] (measure_the_force_text_2)
+        at (7.0, 2.1) {
+          \small
+          measure the force of atoms in \emph{arbitrary} cell
+        };
+        \draw[
+        draw=blue, line width=0.5pt, ->, >=stealth,
+        out=-60, in=120
+        ]
+        (measure_the_force_text_2.south) to (4.7, 1.8);
+
+
         \node[
         draw=black, rounded corners=3pt,
-        anchor=east, text width=2.0cm, align=center
+        anchor=east, align=center
         ] (real_ifc)
-        at (-0.5, 0.5) {
-          \small
-          Dynamical matrix:
-          \begin{equation*}
-            D_{s\alpha,t\beta}(\boldsymbol{q})
-          \end{equation*}
+        at (-0.5, 1.0) {
+          \begin{minipage}[t]{0.3\linewidth}
+            \small
+            Dynamical matrix:
+            \begin{gather*}
+                D_{s\alpha,t\beta}(\boldsymbol{q})
+                \approx
+                {1\over\sqrt{M_sM_t}\,} \\
+                \times
+                \frac{
+                    F^l_{t\beta}(\Delta_{s,\boldsymbol{q}}) - 
+                    F^l_{t\beta}(\text{-}\Delta_{s,\boldsymbol{q}}) 
+                }{
+                    2\Delta_{s,\boldsymbol{q}}
+                }
+                % =
+                % {1\over\sqrt{M_sM_t}\,}
+                % \lambda
+                % \sum_{l=\text{-}\infty}^{\infty}
+                % C_{s\alpha,t\beta}^{0, l}\,
+                % e^{i\boldsymbol{q}\boldsymbol{x}_l}
+            \end{gather*}
+          \end{minipage}
         };
         \end{tikzpicture}
+    \end{center}
+
+    \begin{itemize}
+    \item Can only obtain dynamical matrix at certain $\boldsymbol{q}$.
+    \end{itemize}
+
+    \begin{center}
+      \resizebox{0.8\textwidth}{!}{
+      \begin{tikzpicture}
+        % the real-space cell
+        \draw[help lines, thin] (0, 0) grid +(1, 1);
+        \draw[help lines, thin] (-2, -3) grid +(3, 2);
+        \draw[->, >=stealth, thin, draw=gray]
+        (-2, -3.2) --
+        node[pos=0.5, below, anchor=north] {$\times 3$}
+        (1, -3.2);
+        \draw[->, >=stealth, thin, draw=gray]
+        (-2.2, -3.0) --
+        node[pos=0.5, left, anchor=east] {$\times 2$}
+        (-2.2, -1.0);
+
+        % the primitive BZ
+        \draw[help lines, thin] (3.0, 0.0) rectangle +(1.5, 1.5);
+        \draw[help lines, thin, draw=red] (2.25, -0.75) rectangle +(1.5, 1.5);
+
+        % supercell BZ
+        \draw[help lines, thin] (3.0, -3.0) rectangle +(1.5, 1.5);
+        \draw[help lines, thin, draw=red] (2.25, -3.75) rectangle +(1.5, 1.5);
+        \draw[help lines, thin, draw=blue] (3.0, -3.0) rectangle +(0.5, 0.75);
+
+        \draw[thin, draw=gray] (3.0, -2.25) -- (4.5, -2.25);
+        \foreach \i in {0, 1, 2, 3}{
+          \draw[thin, draw=gray] (3.0 + \i * 0.5, -3) -- (3.0 + \i * 0.5, -1.5);
+        }
+
+        \node[align=right, anchor=east, gray] at (0.0, 0.5) {Primitive Cell (PC)};
+        \node[align=center, anchor=center, gray] at (-0.5, -0.5) {Supercell (SC)};
+        \node[align=center, anchor=center, red] at (3.0, -1.0) {PC Brillouin Zone};
+        \node[align=center, anchor=south, gray] at (3.0, 1.5) {PC Reciprocal Cell};
+        \node[align=center, anchor=north, blue] at (3.0, -3.75) {SC Reciprocal Cell};
+
+        \shade[ball color=blue] (3.0, 0.0) circle (0.04);
+        \node[anchor=south west, align=left] at (3.0, 0.0) {$\Gamma$};
+
+        \shade[ball color=blue] (3.0, -3.0) circle (0.04);
+        \node[anchor=north east, align=center] at (3.0, -3.0) {$q_1$};
+
+        \shade[ball color=blue] (3.0+1./2, -3.0) circle (0.04);
+        \node[anchor=north west, align=center] at (3.0+1./2, -3.0) {$q_2$};
+
+        \shade[ball color=blue] (3.0, -2.25) circle (0.04);
+        \node[anchor=south east, align=center] at (3.0, -2.25) {$q_3$};
+
+        \shade[ball color=blue] (3.0+1./2, -2.25) circle (0.04);
+        \node[anchor=south west, align=center] at (3.0+1./2, -2.25) {$q_4$};
+
+        \foreach \x/\y/\l in {6/-3.5/$q_1$, 6/-0.5/$q_3$, 10.5/-3.5/$q_2$, 10.5/-0.5/$q_4$}{
+          \foreach \i in {0,1,2,3}{
+            \foreach \j in {0,1,2}{
+              \draw[thin, draw=gray] (\i + \x, 0 + \y) -- (\i + \x, 2 + \y);
+              \draw[thin, draw=gray] (0 + \x, \j + \y) -- (3 + \x, \j + \y);
+              \shade[ball color=red] (\x + \i, \y + \j) circle (0.06);
+              \node[left=0.04, anchor=east] at (\x, \y) {\l};
+            }
+          }
+        }
+
+        \foreach \x/\y/\qx/\qy in {6/-3.5/0/0, 6/-0.5/0/0.5, 10.5/-3.5/0.333333333/0, 10.5/-0.5/0.333333333/0.5}{
+          \foreach \i in {0,1,2,3}{
+            \foreach \j in {0,1,2}{
+              \pgfmathparse{0.4 * cos((\i *\qx * 2 * pi + \j * \qy * 2 * pi) r)}
+              \let \A = \pgfmathresult
+              \draw[->, >=stealth, thick, magenta] (\x+\i, \y+\j) -- ++(0.0, \A);
+            }
+          }
+        }
+      \end{tikzpicture}
+      }
     \end{center}
   \end{itemize}
 \end{frame}
