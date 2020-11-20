@@ -337,6 +337,7 @@
     % $D_{s\alpha, t\beta}(\boldsymbol{k})$
     
     \medskip
+
     \begin{center}
       \resizebox{0.75\textwidth}{!}
       {
@@ -385,8 +386,19 @@
         };
         \shade[ball color=red] (0.0, 0.0) circle (0.06);
 
-        \draw[->, >=stealth, black] (4.6, 0.0) -- (5.4, 0.8);
-        \node[align=center, anchor=south] at (5.4, 0.8) {
+        \node[
+            align=center, anchor=center,
+            draw=black, rounded corners=3pt
+        ]
+        (gcenter_mesh) at (2.0, -0.8) {
+          $\Gamma$-centerd \\
+          $\boldsymbol{q}$-mesh
+        };
+        \draw[-{Stealth[length=6pt, open]}, out=150, in=-60]
+        (gcenter_mesh.north west) to (0.1, -0.1);
+
+        \draw[-{Stealth[length=6pt, open]}, black] (4.6, 0.0) -- (5.4, 0.8);
+        \node[align=center, anchor=south, black] at (5.0, 0.8) {
           $C^{0, l}_{s\alpha, t\beta}$
         };
 
@@ -395,10 +407,48 @@
         };
         \draw[black, thick] (9.0, 0.0) -- ++(1.0, 1.0) -- ++(0.0, -1.0) -- cycle;
 
+        \node[
+            align=center, anchor=center,
+            blue, rounded corners=3pt,
+            draw=blue
+        ]
+        (denser_qmesh) at (7.5, -1.5) {
+          Denser $\boldsymbol{q}$-mesh \\
+          for DOS
+        };
+        \draw[blue, -{Stealth[length=6pt, open]}, out=90, in=-120]
+        (denser_qmesh.north) to (8 + 1./4, -2./4);
+
+        \node[
+            align=center, anchor=center,
+            black, rounded corners=3pt,
+            draw=black
+        ]
+        (qpath) at (7.0, 1.2) {
+          $\boldsymbol{q}$-path for \\
+          dispersion
+        };
+        \draw[-{Stealth[length=6pt, open]}, out=-90, in=120]
+        (qpath.south) to (9.25, 0.25);
       \end{tikzpicture}
       }
     \end{center}
+    
+  \item In practice, first calculate the dynamical matrix with a small
+    $\boldsymbol{q}$-mesh, then perform the FT to get the IFC in real
+    space. Finally, dynamical matrix at arbitrary $\boldsymbol{q}$ can be
+    obtained.
+
+    \item Fails in metal with Kohn anomalies or in polar semiconductors where
+      the dynamical matrix is non-analytic for $\boldsymbol{q}\to 0$.
     \end{itemize}
+
+  \medskip
+  \item Codes:
+    \href{https://phonopy.github.io/phonopy/}{\texttt{Phonopy}},
+    \href{http://www.homepages.ucl.ac.uk/~ucfbdxa/phon/}{\texttt{PHON}},
+    \href{https://github.com/ttadano/ALM}{\texttt{ALM}},
+    \href{https://www.quantum-espresso.org/Doc/ph_user_guide.pdf}{\texttt{Quantum Espresso}}\ldots
   \end{enumerate}
 \end{frame}
 
