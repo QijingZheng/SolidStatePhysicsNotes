@@ -316,10 +316,12 @@
     \break
     
   \item Lineare response theory --- density functional perturbation theory
+     \smallskip
     \begin{itemize}
     \setbeamercolor{local structure}{fg=red}
-    \item Can calculate $D_{s\alpha, t\beta}(\boldsymbol{q})$ at arbitrary
-      $\boldsymbol{q}$.
+    \item Can calculate $D_{s\alpha, t\beta}(\boldsymbol{q})$ at \emph{arbitrary}
+      $\boldsymbol{q}$ with a \emph{primitive cell}.
+     \smallskip
       
     \item $D_{s\alpha, t\beta}(\boldsymbol{q})$ is periodic in reciprocal space: 
     $D_{s\alpha, t\beta}(\boldsymbol{q + G}) = D_{s\alpha, t\beta}(\boldsymbol{q})$
@@ -336,8 +338,7 @@
     %     node [below] {Arbitrary $\boldsymbol{q}$} (1.5, 0.0);
     % $D_{s\alpha, t\beta}(\boldsymbol{k})$
     
-    \medskip
-
+    \smallskip
     \begin{center}
       \resizebox{0.75\textwidth}{!}
       {
@@ -434,11 +435,13 @@
       }
     \end{center}
     
-  \item In practice, first calculate the dynamical matrix with a small
+    \smallskip
+    \item In practice, first calculate the dynamical matrix with a small
     $\boldsymbol{q}$-mesh, then perform the FT to get the IFC in real
     space. Finally, dynamical matrix at arbitrary $\boldsymbol{q}$ can be
     obtained.
 
+    \smallskip
     \item Fails in metal with Kohn anomalies or in polar semiconductors where
       the dynamical matrix is non-analytic for $\boldsymbol{q}\to 0$.
     \end{itemize}
@@ -447,8 +450,13 @@
   \item Codes:
     \href{https://phonopy.github.io/phonopy/}{\texttt{Phonopy}},
     \href{http://www.homepages.ucl.ac.uk/~ucfbdxa/phon/}{\texttt{PHON}},
+    \href{http://cpc.cs.qub.ac.uk/summaries/AETS_v1_0.html}{\texttt{YPHON}},
+    \href{http://phonts.mse.ufl.edu/}{\texttt{PhonTS}},
+    \href{http://www.shengbte.org/}{\texttt{ShengBTE}},
     \href{https://github.com/ttadano/ALM}{\texttt{ALM}},
-    \href{https://www.quantum-espresso.org/Doc/ph_user_guide.pdf}{\texttt{Quantum Espresso}}\ldots
+    \href{https://github.com/ttadano/alamode}{\texttt{ALAMODE}},
+    \href{https://www.quantum-espresso.org/Doc/ph_user_guide.pdf}{\texttt{Quantum Espresso}},
+    \href{}{\texttt{Abinit}}\ldots
   \end{enumerate}
 \end{frame}
 
