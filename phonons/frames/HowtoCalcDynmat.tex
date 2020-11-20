@@ -312,6 +312,93 @@
         (0, 0) -- node [above] {Eq.~\ref{eq:dynmat_howto}} (1.0, 0.0);
         $D_{s\alpha, t\beta}(\boldsymbol{k})$
     \end{itemize}
+
+    \break
+    
+  \item Lineare response theory --- density functional perturbation theory
+    \begin{itemize}
+    \setbeamercolor{local structure}{fg=red}
+    \item Can calculate $D_{s\alpha, t\beta}(\boldsymbol{q})$ at arbitrary
+      $\boldsymbol{q}$.
+      
+    \item $D_{s\alpha, t\beta}(\boldsymbol{q})$ is periodic in reciprocal space: 
+    $D_{s\alpha, t\beta}(\boldsymbol{q + G}) = D_{s\alpha, t\beta}(\boldsymbol{q})$
+    %   \tikz[baseline=(current bounding box.west)]
+    %     \draw[->, >=stealth, blue, line width=0.5pt]
+    %     (0, 0) --
+    %     node [above] {FT}
+    %     node [below] {Uniform $q$-mesh}(2.5, 0.0);
+    % $C_{s\alpha, t\beta}^{0, l}$
+    %   \tikz[baseline=(current bounding box.west)]
+    %     \draw[->, >=stealth, blue, line width=0.5pt]
+    %     (0, 0) --
+    %     node [above] {Eq.~\ref{eq:dynmat_howto}}
+    %     node [below] {Arbitrary $\boldsymbol{q}$} (1.5, 0.0);
+    % $D_{s\alpha, t\beta}(\boldsymbol{k})$
+    
+    \medskip
+    \begin{center}
+      \resizebox{0.75\textwidth}{!}
+      {
+      \begin{tikzpicture}
+        \draw[draw=red, line width=1pt] (-1, -1) rectangle +(2, 2);
+        % \draw[draw=blue, line width=0.5pt, step=0.5] (-1, -1) grid (1, 1);
+        \foreach \i in {1, 2, 3}{
+            \foreach \j in {1, 2, 3}{
+              \draw[blue!50, thin] (2 * \i / 4 - 1, -1) -- ++(0.0, 2.0);
+              \draw[blue!50, thin] (-1, 2 * \j / 4 - 1) -- ++(2.0, 0.0);
+             }
+        }
+        
+        \draw[-{Stealth[length=6pt, open]}, thick, gray] (1.1, 0.0) --
+        node[above, pos=0.5] {FT}
+        (2.9, 0.0);
+
+        % \draw[draw=black, line width=0.5pt, step=0.5] (3, -1.4999) grid (6, 1.5001);
+        \foreach \i in {0,1,...,4}{
+            \foreach \j in {0,1,...,4}{
+              \draw[gray, thin] (\i * 0.8 + 3, -1.6) -- ++(0.0, 3.2);
+              \draw[gray, thin] (3, \j * 0.8 - 1.6) -- ++(3.2, 0.0);
+             }
+        }
+
+        \draw[-{Stealth[length=6pt, open]}, thick, gray] (6.3, 0.0) --
+        node [above, pos=0.5] {Eq.~\ref{eq:dynmat_howto}}
+        (7.9, 0.0);
+
+        \draw[draw=red, line width=1pt] (8, -1) rectangle +(2, 2);
+        % \draw[draw=blue, line width=0.5pt, step=0.25] (8, -1) grid +(2, 2);
+        \foreach \i in {1,2,...,7}{
+            \foreach \j in {1,2,...,7}{
+              \draw[blue!50, thin] (8 + 2 * \i / 8, -1) -- ++(0.0, 2.0);
+              \draw[blue!50, thin] (8, 2 * \j / 8 - 1)  -- ++(2.0, 0.0);
+             }
+        }
+
+        \node[align=center, anchor=north, below=3pt, red] at (0.0, -1.0) {Primitive Cell BZ};
+        \node[align=center, anchor=north, below=3pt, gray] at (4.6, -1.6) {Real-space Lattice};
+        \node[align=center, anchor=south, above=3pt] at (0.0, 1.0) {
+          $D_{s\alpha, t\beta}(\boldsymbol{q})$
+        };
+        \node[align=center, anchor=south west] at (0.0, 0.0) {
+          $\Gamma$
+        };
+        \shade[ball color=red] (0.0, 0.0) circle (0.06);
+
+        \draw[->, >=stealth, black] (4.6, 0.0) -- (5.4, 0.8);
+        \node[align=center, anchor=south] at (5.4, 0.8) {
+          $C^{0, l}_{s\alpha, t\beta}$
+        };
+
+        \node[align=center, anchor=south, above=3pt] at (9.0, 1.0) {
+          $D_{s\alpha, t\beta}(\boldsymbol{q}')$
+        };
+        \draw[black, thick] (9.0, 0.0) -- ++(1.0, 1.0) -- ++(0.0, -1.0) -- cycle;
+
+      \end{tikzpicture}
+      }
+    \end{center}
+    \end{itemize}
   \end{enumerate}
 \end{frame}
 

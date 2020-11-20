@@ -47,9 +47,24 @@
   \end{equation*}
 
   \begin{itemize}
-  \item $D_{s\alpha,t\beta}(\boldsymbol{q})$ can be seen as the second
-    derivative of $E^0_{\text{tot}}$ with respect to the amplitude of a lattice
-    distortion of definite wave vector $\boldsymbol{q}$
+  \item
+    % $D_{s\alpha,t\beta}(\boldsymbol{q})$ can be seen as the second
+    % derivative of $E^0_{\text{tot}}$ with respect to the amplitude of a lattice
+    % distortion of definite wave vector $\boldsymbol{q}$
+    If we define the distortion pattern $\boldsymbol{u}^l_{s}(\boldsymbol{q}) =
+    \boldsymbol{v}_{s}(\boldsymbol{q})\, e^{i\boldsymbol{q}\boldsymbol{x}_l}$
+    \begin{equation*}
+      D_{s\alpha,t\beta}(\boldsymbol{q})
+      =
+      {1 \over N}
+      {1\over\sqrt{M_sM_t}\,}
+      \frac{
+      \partial^2 E^0_{\text{tot}}
+      }{
+      \partial {v}^*_{s\alpha}(\boldsymbol{q})
+      \partial {v}_{t\beta}(\boldsymbol{q})
+      }
+    \end{equation*}
       
   \item Dynamical matrix is Hermitian
     \begin{equation*}
@@ -58,7 +73,8 @@
       D^*_{t\beta,s\alpha}(\boldsymbol{q})
     \end{equation*}
     
-    \begin{block}{\textsc{Proof}}
+    % \begin{block}{\textsc{Proof}}
+    \textcolor{blue}{\textsc{Proof}}
       \small
       \begin{columns}[t]
         \begin{column}{0.5\textwidth}
@@ -78,11 +94,13 @@
             {1\over\sqrt{M_sM_t}\,}
             \sum_l
             C_{t\beta,s\alpha}^{0, \text{-}l}\,
-              e^{i\boldsymbol{q}\boldsymbol{x}_l} \cr
+              e^{i\boldsymbol{q}\boldsymbol{x}_l}
+            \tikzmark{proof_1}
           \end{align*}
         \end{column}
         \begin{column}{0.4\textwidth}
           \begin{align*}
+            \tikzmark{proof_2}
             D^*_{s\alpha,t\beta}(\boldsymbol{q})
             &=
             {1\over\sqrt{M_sM_t}\,}
@@ -98,9 +116,17 @@
             D_{t\beta,s\alpha}(\boldsymbol{q})
           \end{align*}
         \end{column}
-        
       \end{columns}
-    \end{block}
+
+      \begin{tikzpicture}
+        [overlay, remember picture]
+        \draw[
+            ->, >=stealth, line width=0.4pt,
+            out=0, in=-180
+        ]
+        (proof_1.east) to (proof_2.west);
+      \end{tikzpicture}
+    % \end{block}
   \end{itemize}
 \end{frame}
 
