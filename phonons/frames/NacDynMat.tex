@@ -1,10 +1,19 @@
 \begin{frame}
-  \frametitle{The Nonanalytic Part of the Dynamical Matrix}
-  The Nonanalytic part of the Dynamical Matrix
+  \frametitle{Long-wavelength limit in polar materials}
+  The dynamical matrix in polar materials can be separated into two parts
+  \footnote{
+    \href{https://journals.aps.org/prb/abstract/10.1103/PhysRevB.55.10355}
+         {X. Gonze and C. Lee, \textit{Phys. Rev. B}\/ 55, 10355(1997).}
+  }
   \begin{equation*}
-    \mathcolor{black}{
-      D^{\text{na}}_{s\alpha,t\beta}(\boldsymbol{q})
-    }
+    D_{s\alpha,t\beta}(\boldsymbol{q} \to 0) = 
+    D^{\text{an}}_{s\alpha,t\beta}(\boldsymbol{q} = 0) +
+    D^{\text{na}}_{s\alpha,t\beta}(\boldsymbol{q} \to 0)
+  \end{equation*}
+  where the nonanalytic part is written as
+  \begin{equation}
+    \label{eq:dynmat_nac}
+    D^{\text{na}}_{s\alpha,t\beta}(\boldsymbol{q} \to 0)
     =
     {1\over\sqrt{M_sM_t}\,}
     {4\pi e^2\over\Omega}
@@ -18,8 +27,40 @@
     }{
       \sum_{\gamma\mu} q_\gamma \, \epsilon_\infty^{\gamma\mu} \,q_\mu 
     }
-  \end{equation*}
+  \end{equation}
+  \begin{itemize}
+    \item
+      $Z^*_s$ is the Born effective charge tensor for atom $s$
+        \begin{equation*}
+        Z_s^{*\alpha\beta} = \Omega_0
+        \frac{
+            \partial {\cal P}_\beta
+        }{
+            \partial u_{s\alpha}
+        }
+        =
+        \frac{
+            \partial F_{s\alpha}
+        }{
+            \partial {\cal E}_\beta
+        }
+        \end{equation*}
 
+        \begin{enumerate}
+        \setlength\itemsep{\smallskipamount}
+        \setbeamercolor{local structure}{fg=red}
+        \item The response of the polarization per unit cell along the direction
+          $\beta$ induced by a displacement along the direction $\alpha$ of the atoms
+          belonging to the sublattice $s$, under the condition of a zero electric
+          field.
+          
+        \item The force on the atom $s$ along $\alpha$ induced by the macroscopic
+          field along $\beta$.
+        \end{enumerate}
+        
+    \item $\epsilon_\infty$ is the \emph{electronic} dielectric tensor of the
+      crystal, i.e. the static dielectric constant with clamped nuclei.
+  \end{itemize}
 \end{frame}
 
 %%% Local Variables:

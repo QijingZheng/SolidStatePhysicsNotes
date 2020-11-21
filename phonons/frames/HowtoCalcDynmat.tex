@@ -325,7 +325,7 @@
       
     \item $D_{s\alpha, t\beta}(\boldsymbol{q})$ is periodic in reciprocal space: 
     $D_{s\alpha, t\beta}(\boldsymbol{q + G}) = D_{s\alpha, t\beta}(\boldsymbol{q})$
-    \medskip
+
     %   \tikz[baseline=(current bounding box.west)]
     %     \draw[->, >=stealth, blue, line width=0.5pt]
     %     (0, 0) --
@@ -379,6 +379,17 @@
 
         \node[align=center, anchor=north, below=3pt, red] at (0.0, -1.0) {Primitive Cell BZ};
         \node[align=center, anchor=north, below=3pt, gray] at (4.6, -1.6) {Real-space Lattice};
+        \node[align=center, anchor=south, text width=5cm] at (4.6, 1.5) {
+            \begin{equation*}
+                C_{s\alpha,t\beta}^{0, l}
+                =
+                {\sqrt{M_sM_t}\,\over N_{\boldsymbol{q}}}
+                \sum_{\boldsymbol{q}}
+                D_{s\alpha,t\beta}(\boldsymbol{q})\,
+                e^{-i\boldsymbol{q}\boldsymbol{x}_l}
+            \end{equation*}
+        };
+
         \node[align=center, anchor=south, above=3pt] at (0.0, 1.0) {
           $D_{s\alpha, t\beta}(\boldsymbol{q})$
         };
@@ -435,8 +446,8 @@
       }
     \end{center}
     
-    \item In practice, first calculate the dynamical matrix with a small
-    $\boldsymbol{q}$-mesh, then perform the FT to get the IFC in real
+    \item In practice, first calculate $D_{s\alpha, t\beta}(\boldsymbol{q})$ with
+    a small $\boldsymbol{q}$-mesh. Then, perform FT to get the IFC in real
     space. Finally, dynamical matrix at arbitrary $\boldsymbol{q}$ can be
     obtained.
 
@@ -454,7 +465,9 @@
     \href{https://github.com/ttadano/ALM}{\texttt{ALM}},
     \href{https://github.com/ttadano/alamode}{\texttt{ALAMODE}},
     \href{https://www.quantum-espresso.org/Doc/ph_user_guide.pdf}{\texttt{Quantum Espresso}},
-    \href{}{\texttt{Abinit}}\ldots
+    \href{https://www.abinit.org/}{\texttt{Abinit}}
+    \href{https://departments.icmab.es/leem/siesta/}{\texttt{Siesta}}
+    \ldots
   \end{enumerate}
 \end{frame}
 
