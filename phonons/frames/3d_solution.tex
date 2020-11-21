@@ -1,10 +1,12 @@
 \begin{frame}
   \frametitle{3D Lattice Dynamics}
-  Within the harmonic approximation, the Newton's equation for the atom $s$ in
-  cell $j$
+  Within the harmonic approximation, the Newton's equation for the atom \emph{$s$} in
+  cell \emph{$j$}
   \begin{equation}
     \label{eq:3d_newton_equation}
-    M_s \frac{\mathrm{d}^2 {u}_{s\alpha}^j(t)}{\mathrm{d}t^2} = -\frac{\partial E_{\text{tot}}}{\partial {u}_{s\alpha}^j} = 
+    M_s \frac{\mathrm{d}^2 {u}_{s\alpha}^j(t)}{\mathrm{d}t^2} =
+    -\frac{\mathcolor{blue}{\partial E_{\text{tot}}}}{\partial {u}_{s\alpha}^j}
+    = 
     - \sum_{kt\beta}
     \mathcolor{Orange}
     {
@@ -27,11 +29,11 @@
   The ansatz of the solution
   \begin{equation}
     \label{eq:3d_solution_ansatz}
-    {u}_{s\alpha}^j(t) = {\eta^s_\alpha(\boldsymbol{q}) \over \sqrt{M_s}} \,e^{i\boldsymbol{q}\mathcolor{red}{\boldsymbol{x}_j}} \,e^{- i\omega t}
+    {u}_{s\alpha}^j(t) = {{\eta}^\sigma_{s\alpha}(\boldsymbol{q}) \over \sqrt{M_s}} \,e^{i\boldsymbol{q}\mathcolor{red}{\boldsymbol{x}_j}} \,e^{- i\omega_\sigma t}
   \end{equation}
   Substitute Eq.~\ref{eq:3d_solution_ansatz} into Eq.~\ref{eq:3d_newton_equation}
   \begin{equation*}
-    \omega^2(\boldsymbol{q}) \,\eta_\alpha^s = \sum_{t\beta}
+    \omega^2_\sigma(\boldsymbol{q}) \,\eta^\sigma_{s\alpha} = \sum_{t\beta}
     \left[
       {\mathcolor{blue}{\sum_k}}
       \mathcolor{blue}{
@@ -44,18 +46,19 @@
         } \, e^{i\boldsymbol{q}(\boldsymbol{x}_k - \boldsymbol{x}_j)}
       }
     \right]
-    \eta^t_\beta
+    \eta^\sigma_{t\beta}
     =
     \sum_{t\beta}
     \mathcolor{blue}{
       D_{s\alpha,t\beta}(\boldsymbol{q})
     }
-    \, \eta^t_\beta
+    \, \eta^\sigma_{t\beta}
   \end{equation*}
 
   In matrix form
   \begin{equation*}
-    \underline{
+    % \underline{
+    {
     \begin{pmatrix}
       \renewcommand*{\arraystretch}{1.5}
       \ddots & \phantom{A} & \phantom{A} \\
@@ -63,19 +66,23 @@
       \phantom{A} & \tikzmark{Dmatrix}  \phantom{A} & \ddots
     \end{pmatrix}
     }
+    % \underline{
+    {
     \begin{pmatrix}
       \renewcommand*{\arraystretch}{1.5}
       \vdots \\
-      \eta^t_\beta(\boldsymbol{q}) \\
-      \vdots
-    \end{pmatrix}
-    = \omega^2(\boldsymbol{q})
-    \underline{
-    \begin{pmatrix}
-      \renewcommand*{\arraystretch}{1.5}
-      \vdots \\
-      \eta^t_\beta(\boldsymbol{q}) \\
+      \eta^\sigma_{t\beta}(\boldsymbol{q}) \\
       \vdots \tikzmark{EigenVector1}
+    \end{pmatrix}
+    }
+    = \omega^2(\boldsymbol{q})\tikzmark{phonon_dispersion}
+    % \underline{
+    {
+    \begin{pmatrix}
+      \renewcommand*{\arraystretch}{1.5}
+      \vdots \\
+      \eta^\sigma_{t\beta}(\boldsymbol{q}) \\
+      \vdots \tikzmark{polarization_vector}
     \end{pmatrix}
     }
     % \qquad 
@@ -96,10 +103,20 @@
     (eigenvec_note) {
       $3N_a$
     };
+    \node[below=6pt of polarization_vector, align=center]
+    (polarization_vector_note) {
+      polarization  vector
+    };
+
+    % \node[above=3pt of phonon_dispersion, align=center]
+    % (phonon_dispersion) {
+    %   polarization \\
+    %   vector
+    % };
   \end{tikzpicture}
 
   \bigskip
-  where $N_a$ is the number of atoms in a cell.
+  where $\sigma = 1,...,3N_a$ and $N_a$ is the number of atoms in the \emph{primitive cell}.
 \end{frame}
 %%% Local Variables:
 %%% mode: latex

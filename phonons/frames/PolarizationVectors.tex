@@ -1,0 +1,50 @@
+\begin{frame}
+  \frametitle{Phonon Polarization Vectors}
+
+  The eigenvectors $\boldsymbol{\eta}^\sigma(\boldsymbol{q})$ of the Hermitian
+  matrix $D_{s\alpha,t\beta}(\boldsymbol{q})$ are called the phonon polarization
+  vector.
+
+  \begin{itemize}
+    \setlength\itemsep{\smallskipamount}
+    
+    \item The polarization vector is \emph{cell-periodic}.
+    \begin{equation*}
+        {u}_{s\alpha}^j(t) =
+        {{\eta}^\sigma_{s\alpha}(\boldsymbol{q}) \over \sqrt{M_s}}\,
+        e^{i\boldsymbol{q}\mathcolor{red}{\boldsymbol{x}_j}} \,e^{- i\omega_\sigma t}
+    \end{equation*}
+    So the solution is a cell-periodic part multiply by
+    $e^{i\boldsymbol{q}\boldsymbol{x}}$ --- Bloch's theorem.
+
+    \item Orthogonalization relation:
+    \begin{equation*}
+      \sum_{s\alpha}
+      \eta^{\sigma'}_{s\alpha}(\boldsymbol{q})\,
+      \eta^{\sigma}_{s\alpha}(\boldsymbol{q})
+      = \delta_{\sigma\sigma'};
+      \qquad
+      \sum_{\sigma}
+      \eta^{\sigma}_{s\alpha}(\boldsymbol{q})\,
+      \eta^{\sigma}_{t\beta}(\boldsymbol{q})
+      = \delta_{st} \, \delta_{\alpha\beta}
+    \end{equation*}
+    \item Relation to phonon displacemoment --- direction and amplitude of the vibration.
+      \begin{equation*}
+      \xi^{\sigma}_{s\alpha} = {1\over\sqrt{M_s}}\,\eta^{\sigma}_{s\alpha}(\boldsymbol{q})
+      \end{equation*}
+      
+    \item At some high-symmetry $\boldsymbol{q}$-path
+      \begin{equation*}
+        \begin{cases}
+          \boldsymbol{q} \parallel \mathbf{\eta}(\boldsymbol{q}) & \text{Longitudinal Wave} \cr
+          \boldsymbol{q} \perp     \mathbf{\eta}(\boldsymbol{q}) & \text{Transverse Wave} \cr
+        \end{cases}
+      \end{equation*}
+  \end{itemize}
+\end{frame}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

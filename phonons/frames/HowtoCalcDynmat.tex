@@ -315,16 +315,17 @@
 
     \break
     
-  \item Lineare response theory --- density functional perturbation theory
+  \item Lineare response approach --- density functional perturbation theory
      \smallskip
     \begin{itemize}
     \setbeamercolor{local structure}{fg=red}
+    \setlength\itemsep{\smallskipamount}
     \item Can calculate $D_{s\alpha, t\beta}(\boldsymbol{q})$ at \emph{arbitrary}
-      $\boldsymbol{q}$ with a \emph{primitive cell}.
-     \smallskip
+      $\boldsymbol{q}$ using a \emph{primitive cell}.
       
     \item $D_{s\alpha, t\beta}(\boldsymbol{q})$ is periodic in reciprocal space: 
     $D_{s\alpha, t\beta}(\boldsymbol{q + G}) = D_{s\alpha, t\beta}(\boldsymbol{q})$
+    \medskip
     %   \tikz[baseline=(current bounding box.west)]
     %     \draw[->, >=stealth, blue, line width=0.5pt]
     %     (0, 0) --
@@ -338,7 +339,6 @@
     %     node [below] {Arbitrary $\boldsymbol{q}$} (1.5, 0.0);
     % $D_{s\alpha, t\beta}(\boldsymbol{k})$
     
-    \smallskip
     \begin{center}
       \resizebox{0.75\textwidth}{!}
       {
@@ -435,13 +435,11 @@
       }
     \end{center}
     
-    \smallskip
     \item In practice, first calculate the dynamical matrix with a small
     $\boldsymbol{q}$-mesh, then perform the FT to get the IFC in real
     space. Finally, dynamical matrix at arbitrary $\boldsymbol{q}$ can be
     obtained.
 
-    \smallskip
     \item Fails in metal with Kohn anomalies or in polar semiconductors where
       the dynamical matrix is non-analytic for $\boldsymbol{q}\to 0$.
     \end{itemize}
