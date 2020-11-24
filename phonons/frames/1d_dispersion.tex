@@ -59,7 +59,7 @@
 
             \pgfmathparse{0.4*cos(\q*pi*\x r)}
             \let \A = \pgfmathresult
-            \draw[->, >=stealth, line width=1.5pt, draw=red] (\x, \y) -- ++(\A, 0.0);
+            \draw[->, >=stealth, line width=1.5pt, draw=red, tips=proper] (\x, \y) -- ++(\A, 0.0);
         }
       }
       \draw[line width=0.5pt] (1.0, 0) -- ++(0.0,-0.7);

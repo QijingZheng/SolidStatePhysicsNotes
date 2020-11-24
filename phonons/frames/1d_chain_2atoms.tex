@@ -43,9 +43,10 @@
         % draw the atoms
         \ifthenelse{\x > 0}
         {
-          \pgfmathparse{int(mod(\x, 2))}
-          \let \n = \pgfmathresult
-          \ifthenelse{\n = 0}{
+          % \pgfmathparse{int(mod(\x, 2))}
+          % \let \n = \pgfmathresult
+          % \ifthenelse{\n = 0}{
+          \ifthenelse{\NOT \isodd{\x}}{
             \shade[ball color=blue] (\x, 0) circle (5pt);
           }{
             \shade[ball color=red] (\x, 0) circle (6pt);

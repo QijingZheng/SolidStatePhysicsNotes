@@ -1,0 +1,156 @@
+\begin{frame}
+  \frametitle{LO-TO Splitting}
+  % \begin{center}
+  %   \resizebox{0.9\textwidth}{!}
+  %   {
+  %       \begin{tikzpicture}
+  %       [scale=1.0]
+  %       \foreach \shift in {0, 1}{
+  %           \foreach \j in {0, 1, 2}{
+  %           \foreach \i in {0, 1, 2,..., 16}{
+  %               \pgfmathparse{\i + \j}
+  %               \let \n = \pgfmathresult
+
+  %               \ifthenelse{
+  %               \isodd{\n}
+  %               }{
+  %               \pgfmathparse{0.5 * sin(pi * (\i - 1 + mod(\j, 2)) / 4 r)}
+  %               \let \A = \pgfmathresult
+
+  %               % plot the atoms
+  %               \shade[ball color=blue] (\i, \j + \shift * 4) circle (0.15);
+  %               \ifthenelse{\shift=0}{
+  %                   % the longitudinal wave for the negative ions
+  %                   \draw[-{Stealth[length=6pt, open]}, tips=proper, line width=1pt] (\i, \j + \shift * 4) -- ++ (-\A, 0);
+  %               }{
+  %                   % the transverse wave for the negative ions
+  %                   \draw[-{Stealth[length=6pt, open]}, tips=proper, line width=1pt] (\i, \j + \shift * 4) -- ++ (0, -\A);
+  %               }
+  %               }{
+  %               \pgfmathparse{0.5 * sin(pi / 4 * (\i + mod(\j, 2))  r)}
+  %               \let \A = \pgfmathresult
+
+  %               \shade[ball color=red] (\i, \j + \shift * 4) circle (0.15);
+  %               \ifthenelse{\shift=0}{
+  %                   % the transverse wave for the positive ions
+  %                   \draw[-{Stealth[length=6pt, open]}, tips=proper, line width=1pt] (\i, \j + \shift * 4) -- ++ (\A, 0);
+  %               }{
+  %                   \draw[-{Stealth[length=6pt, open]}, tips=proper, line width=1pt] (\i, \j + \shift * 4) -- ++ (0, \A);
+  %               }
+  %               }
+  %           }
+  %           }
+  %       }
+
+  %       % Add LO/TO labels
+  %       \node[align=center, anchor=east] at (-0.5, 1.0) {\textbf{\large LO Phonon}};
+  %       \node[align=center, anchor=east] at (-0.5, 5.0) {\textbf{\large TO Phonon}};
+  %       % the q direction
+  %       \draw[-{Stealth[length=6pt, open]}, draw, line width=0.8pt]
+  %       (0.0, -1) --
+  %       (6.0, -1)
+  %       node[below=3pt] {\large $\boldsymbol{q}$};
+  %       \end{tikzpicture}
+  %   }
+  % \end{center}
+  \begin{center}
+    \resizebox{0.80\textwidth}{!}
+    {
+        \begin{tikzpicture}
+        [scale=1.0]
+        \foreach \shift in {0, 1}{
+            \foreach \j in {0, 1, 2}{
+            \foreach \i in {0, 1, 2,..., 8}{
+                \pgfmathparse{\i + \j}
+                \let \n = \pgfmathresult
+
+                \ifthenelse{
+                \isodd{\n}
+                }{
+                \pgfmathparse{0.5 * sin(pi * (\i - 1 + mod(\j, 2)) / 4 r)}
+                \let \A = \pgfmathresult
+
+                % plot the atoms
+                \shade[ball color=blue] (\i + \shift * 10, \j) circle (0.15);
+                \ifthenelse{\shift=0}{
+                    % the longitudinal wave for the negative ions
+                    \draw[-{Stealth[length=6pt, open]}, tips=proper, line width=1pt] (\i + \shift * 10, \j) -- ++ (-\A, 0);
+                }{
+                    % the transverse wave for the negative ions
+                    \draw[-{Stealth[length=6pt, open]}, tips=proper, line width=1pt] (\i + \shift * 10, \j) -- ++ (0, -\A);
+                }
+                }{
+                    \pgfmathparse{0.5 * sin(pi / 4 * (\i + mod(\j, 2))  r)}
+                    \let \A = \pgfmathresult
+
+                    \shade[ball color=red] (\i + \shift * 10, \j) circle (0.15);
+                    \ifthenelse{\shift=0}{
+                        % the longitudinal wave for the positive ions
+                        \draw[-{Stealth[length=6pt, open]}, tips=proper, line width=1pt] (\i + \shift * 10, \j) -- ++ (\A, 0);
+                    }{
+                        % the transverse wave for the positive ions
+                        \draw[-{Stealth[length=6pt, open]}, tips=proper, line width=1pt] (\i + \shift * 10, \j) -- ++ (0, \A);
+                    }
+                }
+
+                % the nodal plane
+                \pgfmathparse{int(mod(\i, 4))}
+                \let \n = \pgfmathresult
+                \ifthenelse{\n = 0}{
+                    \draw[gray, dashed, ultra thin] (\i + \shift * 10, 0.0) -- ++(0.0, -1);
+                }{}
+              }
+            }
+        }
+
+        % Add LO/TO labels
+        \node[above=3pt, align=center, anchor=south] at ( 4.0, 3.0)
+        {\textbf{\large LO Phonon}};
+        \node[above=3pt, align=center, anchor=south] at (14.0, 3.0)
+        {\textbf{\large TO Phonon}};
+        % the q direction
+        \draw[-{Stealth[length=6pt, open]}, draw, line width=0.8pt]
+        (7.0, -1.5) --
+        (11.0, -1.5)
+        node[below=3pt] {\large $\boldsymbol{q}$};
+        % \draw[-{Stealth[length=6pt, open]}, draw, line width=0.8pt]
+        % (11.0, -1.5) --
+        % (17.0, -1.5)
+        % node[below=3pt] {\large $\boldsymbol{q}$};
+
+        \foreach \i in {1, 3, 5, ..., 10}{
+          \node[align=center, blue] at (0.0, -\i * 1 / 10){\huge\textbf{-}};
+          \node[align=center, red] at (4.0, -\i * 1 / 10){\textbf{+}};
+          \node[align=center, blue] at (8.0, -\i * 1 / 10){\huge\textbf{-}};
+        }
+        \draw[-{Stealth[length=6pt, open]}, draw, line width=0.8pt]
+        (3.5, -0.5) -- (0.5, -0.5)
+        node[below=3pt, pos=0.5] {\large $\boldsymbol{E}$};
+
+        \draw[-{Stealth[length=6pt, open]}, draw, line width=0.8pt]
+        (4.5, -0.5) -- (7.5, -0.5)
+        node[below=3pt, pos=0.5] {\large $\boldsymbol{E}$};
+
+        \foreach \i in {0, 1, 2, ..., 10}{
+          \node[align=center, red ] at (11.0 + \i * 2 / 10,  2.5){\textbf{+}};
+          \node[align=center, blue] at (11.0 + \i * 2 / 10, -0.5){\huge\textbf{-}};
+
+          \node[align=center, blue] at (15.0 + \i * 2 / 10,  2.5){\textbf{+}};
+          \node[align=center, red ] at (15.0 + \i * 2 / 10, -0.5){\huge\textbf{-}};
+        }
+        \draw[-{Stealth[length=6pt, open]}, draw, line width=0.8pt]
+        (11.5, 1.8) -- (11.5, 0.2)
+        node[below=3pt] {\large $\boldsymbol{E}$};
+
+        \draw[-{Stealth[length=6pt, open]}, draw, line width=0.8pt]
+        (16.5, 0.2) -- (16.5, 1.8)
+        node[above=3pt] {\large $\boldsymbol{E}$};
+        \end{tikzpicture}
+    }
+  \end{center}
+\end{frame}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
