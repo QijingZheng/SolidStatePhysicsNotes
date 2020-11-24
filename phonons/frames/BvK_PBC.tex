@@ -1,5 +1,20 @@
 \begin{frame}
   \frametitle{Born–von Karman boundary condition}
+  The Born-von Karman Periodic Boundary Condition:
+  \begin{align*}
+    u_{n} = u_{N+n}
+    \quad
+    & \Rightarrow
+    \quad
+    e^{iqx_j} = e^{iqx_{N+j}} 
+    \quad
+    \Rightarrow
+    \quad
+    e^{iqNa} = 1
+    \cr
+    &\Rightarrow \quad q = \frac{2 \pi}{a} \frac{l}{N}; \quad (l=0,1,\ldots,N)
+  \end{align*}
+
   \begin{center}
     \resizebox{!}{0.4\textheight}{
     \begin{tikzpicture}
@@ -30,21 +45,13 @@
     }
   \end{center}
 
-  The Born-von Karman Periodic Boundary Condition:
+  Usually, $q$ is restricted within the first Brillouin Zone
   \begin{equation*}
-    u_{n} = u_{N+n}
-    \quad
-    \Rightarrow
-    \quad
-    e^{iqx_j} = e^{iqx_{N+j}} 
-    \quad
-    \Rightarrow
-    \quad
-    e^{iqNa} = 1
-    \quad
-    \Rightarrow
-    \quad
-    q = \frac{2 \pi}{a} \frac{l}{N}
+    -\frac{\pi}{a}
+    \le
+    q 
+    \le
+    \frac{\pi}{a}
   \end{equation*}
 
 \end{frame}
