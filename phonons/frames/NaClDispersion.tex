@@ -1,19 +1,21 @@
 \begin{frame}
-  \frametitle{NaCl Phonon Dispersion}
+  \frametitle{Phonon Band Structure/ with/without NAC}
 
   \begin{center}
-    \resizebox{0.35\textwidth}{!}{
+    % \resizebox{0.35\textwidth}{!}{
+    \resizebox{!}{0.36\textheight}{
     \begin{tikzpicture}
         \begin{axis}[
-            title = {
-                NaCl Phonon Band \emph{without} NAC
-                \footnote{
+            width=3in, height=3in,
+            title = {\large
+                NaCl \emph{WITHOUT} NAC
+                \footnote{\scriptsize
                   \href{https://github.com/phonopy/phonopy/tree/master/example/NaCl}
                        {https://github.com/phonopy/phonopy/tree/master/example/NaCl}
                 }
             },
             xlabel = {},
-            ylabel = {Frequency (THz)},
+            ylabel = {\large Frequency (THz)},
             xmin = 0.0, xmax=0.6323173,
             ymin =-0.5, ymax=8.0,
             xtick = {0.       , 0.1521932, 0.3043865, 0.4801241, 0.6323173},
@@ -21,6 +23,7 @@
             xmajorgrids=true,
             ymajorgrids=true,
             % grid style=dashed,
+            % axis equal image
         ]
         \foreach \i in {1,...,6}{
             \addplot [
@@ -28,18 +31,21 @@
                 thick
             ] table [
                 x index=0, y index=\i,
-            ] {data/freq_no_nac.dat};
+            ] {data/nacl_freq_no_nac.dat};
         }
+        \draw[dashed, line width=0.6pt] (0.480, 4.608) circle [radius=12pt];
         \end{axis}
     \end{tikzpicture}
     }
     \hspace{20pt}
-    \resizebox{0.35\textwidth}{!}{
+    % \resizebox{0.35\textwidth}{!}{
+    \resizebox{!}{0.36\textheight}{
     \begin{tikzpicture}
         \begin{axis}[
-            title = {NaCl Phonon Band \emph{with} NAC},
+            width=3in, height=3in,
+            title = {\large NaCl \emph{WITH} NAC},
             xlabel = {},
-            ylabel = {Frequency (THz)},
+            ylabel = {\large Frequency (THz)},
             xmin = 0.0, xmax=0.6323173,
             ymin =-0.5, ymax=8.0,
             xtick = {0.       , 0.1521932, 0.3043865, 0.4801241, 0.6323173},
@@ -50,18 +56,89 @@
         ]
         \foreach \i in {1,...,6}{
             \addplot [
-                color=red,
+                color=blue,
                 thick,
             ] table [
                 x index=0, y index=\i,
-            ] {data/freq_nac.dat};
+            ] {data/nacl_freq_nac.dat};
         }
         \end{axis}
     \end{tikzpicture}
     }
   \end{center}
-\end{frame}
+% \end{frame}
 
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{frame}
+%   \frametitle{Anatase TiO$_2$ Phonon Dispersion}
+
+  \smallskip
+  \begin{center}
+    % \resizebox{0.35\textwidth}{!}{
+    \resizebox{!}{0.36\textheight}{
+    \begin{tikzpicture}
+        \begin{axis}[
+            width=3in, height=3in,
+            title = {\large
+                Anatase TiO$_2$ \emph{WITHOUT} NAC
+                \footnote{\tiny
+                  \href{https://github.com/phonopy/phonopy/tree/master/example/TiO2-anatase}
+                       {https://github.com/phonopy/phonopy/tree/master/example/TiO2-anatase}
+                }
+            },
+            xlabel = {},
+            ylabel = {\large Frequency (THz)},
+            xmin = 0.0, xmax=0.7216308,
+            ymin =-1.0, ymax=26.0,
+            xtick = {0.       , 0.1848005, 0.2365713, 0.3672451, 0.5078005, 0.6113422, 0.7216308},
+            xticklabels = {$\Gamma$, $X$, $P$, $N$, $\Gamma$, $M$, $S$},
+            xmajorgrids=true,
+            ymajorgrids=true,
+            % grid style=dashed,
+            % axis equal image
+        ]
+        \foreach \i in {1,...,18}{
+            \addplot [
+                color=red,
+                thick
+            ] table [
+                x index=0, y index=\i,
+            ] {data/tio2_freq_no_nac.dat};
+        }
+        \end{axis}
+    \end{tikzpicture}
+    }
+    \hspace{20pt}
+    % \resizebox{0.35\textwidth}{!}{
+    \resizebox{!}{0.36\textheight}{
+    \begin{tikzpicture}
+        \begin{axis}[
+            width=3in, height=3in,
+            title = {\large Anatase TiO$_2$ \emph{WITH} NAC},
+            xlabel = {},
+            ylabel = {\large Frequency (THz)},
+            xmin = 0.0, xmax=0.7216308,
+            ymin =-1.0, ymax=26.0,
+            xtick = {0.       , 0.1848005, 0.2365713, 0.3672451, 0.5078005, 0.6113422, 0.7216308},
+            xticklabels = {$\Gamma$, $X$, $P$, $N$, $\Gamma$, $M$, $S$},
+            xmajorgrids=true,
+            ymajorgrids=true,
+            % grid style=dashed,
+        ]
+        \foreach \i in {1,...,18}{
+            \addplot [
+                color=blue,
+                thick,
+            ] table [
+                x index=0, y index=\i,
+            ] {data/tio2_freq_nac.dat};
+        }
+        \draw[dashed, line width=0.6pt] (0.5078005, 22.5) circle [radius=16pt];
+        \end{axis}
+    \end{tikzpicture}
+    }
+  \end{center}
+\end{frame}
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: t
