@@ -1,0 +1,128 @@
+\begin{frame}
+  \frametitle{First and Second-order Derivatives of the Total Energy}
+  Within DFT, the total energy is given by
+  \begin{equation*}
+    E_{\text{tot}} =
+    \sum_{i}^{\textit{occ}}
+    \braket{
+      \psi_i(\boldsymbol{r})
+      |-{\hbar^2\over2m}\nabla^2 |
+      \psi_i(\boldsymbol{r})
+    }
+    +
+    \int_{\tikzmark{int_space}V} V_{\text{loc}}(\boldsymbol{r}) \rho(\boldsymbol{r}) \,\mathrm{d}\boldsymbol{r}
+    +
+    E_H[\rho]
+    +
+    E_{xc}[\rho]
+    +
+    U_{II}
+  \end{equation*}
+
+  \begin{tikzpicture}
+    [overlay, remember picture]
+    \node[
+        draw,
+        rounded corners=3pt,
+        below left = 3pt and 2em of int_space,
+        align=center, % text width=3em,
+        anchor=north east
+    ] (int_space_note) {
+      \small over the entire space
+    };
+    \draw[
+    -{Stealth[length=6pt, open]},
+    out=0, in=-120
+    ] (int_space_note.east) to ($(int_space) + (3pt, -1pt)$);
+  \end{tikzpicture}
+
+  \begin{multicols}{2}
+    \begin{itemize}
+      \item $V_{\text{loc}}(\boldsymbol{r})$: electron-ion interaction
+      \item $U_{II}$: ion-ion interaction
+      \item $E_H[\rho]$: electron Hartree energy
+      \item $E_{xc}[\rho]$: exchange-correlation energy
+      \item $\rho(\boldsymbol{r})$: electron density
+      \item[] $\displaystyle \rho(\boldsymbol{r}) = \sum_i^{occ} \braket{\psi_i^*(\boldsymbol{r}) |
+          \psi_i(\boldsymbol{r})}$
+    \end{itemize}
+  \end{multicols}
+
+  % \vspace{12pt}
+  The first and second order derivative with respect to external parameter
+  $\lambda$, $\mu$
+   \begin{align}
+    \frac{
+      \partial E_{\text{tot}}
+    }{
+      \partial \lambda
+    }
+    &=
+    \int_V
+    \frac{
+      \partial
+      V_{\text{loc}}(\boldsymbol{r})
+    }{
+      \partial \lambda
+    }
+    \mathcolor{blue}{\rho(\boldsymbol{r})}
+    \,\mathrm{d}\boldsymbol{r}
+    +
+    \frac{
+      \partial
+      U_{II}
+    }{
+      \partial \lambda
+    } \label{eq:energy_1st_deriv}
+    \\[6pt]
+    \frac{
+      \partial^2 E_{\text{tot}}
+    }{
+      \partial \lambda
+      \partial \mu
+    }
+    &=
+    \int_V
+    \frac{
+      \partial^2
+      V_{\text{loc}}(\boldsymbol{r})
+    }{
+      \partial \lambda
+      \partial \mu
+    }
+    \rho(\boldsymbol{r}) \,\mathrm{d}\boldsymbol{r}
+    +
+    \frac{
+      \partial^2 U_{II}
+    }{
+      \partial \lambda
+      \partial \mu
+    } \nonumber \\
+    & +
+    \int_V
+    \frac{
+      \partial
+      V_{\text{loc}}(\boldsymbol{r})
+    }{
+      \partial \lambda
+    }
+    \mathcolor{red}{
+      \frac{
+        \partial
+        \rho(\boldsymbol{r})
+      }{
+        \partial \mu
+      }
+    }
+    \,\mathrm{d}\boldsymbol{r} \label{eq:energy_2nd_deriv}
+  \end{align}
+
+  2-nd derivative requires the extra calculation of the \textit{linear response}
+  of the charge density to the external perturbation!
+
+\end{frame}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

@@ -1,0 +1,68 @@
+\begin{frame}
+  \frametitle{NaCl Phonon Dispersion}
+
+  \begin{center}
+    \resizebox{0.35\textwidth}{!}{
+    \begin{tikzpicture}
+        \begin{axis}[
+            title = {
+                NaCl Phonon Band \emph{without} NAC
+                \footnote{
+                  \href{https://github.com/phonopy/phonopy/tree/master/example/NaCl}
+                       {https://github.com/phonopy/phonopy/tree/master/example/NaCl}
+                }
+            },
+            xlabel = {},
+            ylabel = {Frequency (THz)},
+            xmin = 0.0, xmax=0.6323173,
+            ymin =-0.5, ymax=8.0,
+            xtick = {0.       , 0.1521932, 0.3043865, 0.4801241, 0.6323173},
+            xticklabels = {$\Gamma$, $X$, $M$, $\Gamma$, $R$},
+            xmajorgrids=true,
+            ymajorgrids=true,
+            % grid style=dashed,
+        ]
+        \foreach \i in {1,...,6}{
+            \addplot [
+                color=red,
+                thick
+            ] table [
+                x index=0, y index=\i,
+            ] {data/freq_no_nac.dat};
+        }
+        \end{axis}
+    \end{tikzpicture}
+    }
+    \hspace{20pt}
+    \resizebox{0.35\textwidth}{!}{
+    \begin{tikzpicture}
+        \begin{axis}[
+            title = {NaCl Phonon Band \emph{with} NAC},
+            xlabel = {},
+            ylabel = {Frequency (THz)},
+            xmin = 0.0, xmax=0.6323173,
+            ymin =-0.5, ymax=8.0,
+            xtick = {0.       , 0.1521932, 0.3043865, 0.4801241, 0.6323173},
+            xticklabels = {$\Gamma$, $X$, $M$, $\Gamma$, $R$},
+            xmajorgrids=true,
+            ymajorgrids=true,
+            % grid style=dashed,
+        ]
+        \foreach \i in {1,...,6}{
+            \addplot [
+                color=red,
+                thick,
+            ] table [
+                x index=0, y index=\i,
+            ] {data/freq_nac.dat};
+        }
+        \end{axis}
+    \end{tikzpicture}
+    }
+  \end{center}
+\end{frame}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
