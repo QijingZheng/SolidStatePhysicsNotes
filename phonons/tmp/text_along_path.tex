@@ -1,0 +1,56 @@
+% Mindmap
+% Author: Stefan Kottwitz
+% https://www.packtpub.com/hardware-and-creative/latex-cookbook
+\documentclass[border = 60pt]{article}
+\usepackage[landscape]{geometry}
+\usepackage{scalefnt}
+\usepackage{tikz}
+\usetikzlibrary{mindmap}
+\usetikzlibrary{positioning,calc,arrows,decorations.pathmorphing,intersections,shapes,snakes,decorations.text}
+\usepackage{metalogo}
+% \usepackage{dtklogos}
+\begin{document}
+\begin{center}
+  \begin{tikzpicture}
+    [ ]
+      \path[
+        decorate,
+        decoration={
+          text along path, 
+          text={$x, y, z$}
+          % text={$\left[-{\hbar^2\over2m}\nabla^2 +
+          %     V_{KS}(\boldsymbol{r})\right]\psi_n(\boldsymbol{r}) =
+          %   \varepsilon_n \psi(\boldsymbol{r})$}
+        }]
+      (0, 0)
+      arc [
+        radius=3, start angle=0, end angle=120
+      ];
+        %   text={$\left[-{\hbar^2\over2m}\nabla^2 +
+        %       V_{KS}(\boldsymbol{r})\right]\psi_n(\boldsymbol{r}) =
+        %     \varepsilon_n \psi(\boldsymbol{r})$}
+        % }
+  \end{tikzpicture}
+\end{center}
+
+\begin{center}
+  \begin{tikzpicture}[
+    decoration={
+      text along path,
+      text={$y(n)={h_0}x(n)+{h_1}x(n-1)+{\ldots}
+        +{h_{N-1}}x(n-N+1)={\sum_{k=0}^{N-1}}{h_kx(n-k)}$}}
+      % text={$\ \ \ [-{}\nabla^2 + V_{KS}({r})]\psi_n({r}) = \varepsilon_n \psi({r})$}}
+    ]
+  \path [decorate]
+    (0,0) .. controls (0,6) and (9,6) .. (9,0);
+\end{tikzpicture}
+\end{center}
+
+hello \tikz \draw[baseline=current bounding box.south, line width=2pt] (0, 0) -- (30, 0); world
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

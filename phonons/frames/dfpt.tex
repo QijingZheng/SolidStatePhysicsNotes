@@ -21,8 +21,8 @@
   %       decoration={
   %         text along path, 
   %         text={$\left[-{\hbar^2\over2m}\nabla^2 +
-  %             V_{KS}(\boldsymbol{r})\right]\psi_n(\boldsymbol{r}) =
-  %           \varepsilon_n \psi(\boldsymbol{r})$}
+  %             V_{KS}(\boldr)\right]\psi_n(\boldr) =
+  %           \varepsilon_n \psi(\boldr)$}
   %       }
   %     ]
   %     arc [
@@ -47,37 +47,37 @@
     \textcolor{blue}{The Kohn-Sham eqution}
     \begin{align*}
       \biggl[
-        -{\hbar^2\over2m}\nabla^2 &+ V_{KS}(\boldsymbol{r}; \mu)
+        -{\hbar^2\over2m}\nabla^2 &+ V_{KS}(\boldr; \mu)
       \biggr]
-      \psi_n(\boldsymbol{r})
+      \psi_n(\boldr)
       =
       \varepsilon_n
-      \psi_n(\boldsymbol{r}) \\
-      \rho(\boldsymbol{r})
+      \psi_n(\boldr) \\
+      \rho(\boldr)
       & =
-      \sum_n^{occ} |\psi_n(\boldsymbol{r})|^2 \\
-      V_{KS}(\boldsymbol{r})
+      \sum_n^{occ} |\psi_n(\boldr)|^2 \\
+      V_{KS}(\boldr)
       & =
-      V_{ext}(\boldsymbol{r}) +
-      V_{H}(\boldsymbol{r}) +
-      V_{xc}(\boldsymbol{r})
+      V_{ext}(\boldr) +
+      V_{H}(\boldr) +
+      V_{xc}(\boldr)
     \end{align*}
 
     With a small perturbation $\mu$
     \begin{align*}
-      V_{KS}(\boldsymbol{r}; \mu)
+      V_{KS}(\boldr; \mu)
       & =
-      V_{KS}(\boldsymbol{r}; \mu=0) +
+      V_{KS}(\boldr; \mu=0) +
       \mu \frac{
-        \partial V_{KS}(\boldsymbol{r})
+        \partial V_{KS}(\boldr)
       }{
         \partial \mu
       } \\
-      \psi_n(\boldsymbol{r}; \mu)
+      \psi_n(\boldr; \mu)
       & =
-      \psi_n(\boldsymbol{r}; \mu=0) +
+      \psi_n(\boldr; \mu=0) +
       \mu \frac{
-        \partial \psi_n(\boldsymbol{r})
+        \partial \psi_n(\boldr)
       }{
         \partial \mu
       } \\
@@ -100,10 +100,10 @@
   \begin{equation}
     \label{eq:dfpt_eq}
     \biggl[
-    -{\hbar^2\over2m}\nabla^2 + V_{KS}(\boldsymbol{r}) - \varepsilon_n
+    -{\hbar^2\over2m}\nabla^2 + V_{KS}(\boldr) - \varepsilon_n
     \biggr]
     \frac{
-      \partial \psi_n(\boldsymbol{r})
+      \partial \psi_n(\boldr)
     }{
       \partial\mu
     }
@@ -111,7 +111,7 @@
     -
     \left[
         \frac{
-        \partial V_{KS}(\boldsymbol{r})
+        \partial V_{KS}(\boldr)
         }{
         \partial\mu
         }
@@ -122,36 +122,36 @@
         \partial\mu
         }
     \right]
-      \psi_n(\boldsymbol{r})
+      \psi_n(\boldr)
   \end{equation}
 
   where
   \begin{align}
     \frac{
-      \partial V_{KS}(\boldsymbol{r})
+      \partial V_{KS}(\boldr)
     }{
       \partial \mu
     }
     =
     \frac{
-      \partial V_{ext}(\boldsymbol{r})
+      \partial V_{ext}(\boldr)
     }{
       \partial \mu
     }
     &+
     \frac{
-      \partial V_{H}(\boldsymbol{r})
+      \partial V_{H}(\boldr)
     }{
       \partial \mu
     }
     +
     \frac{
-      \partial V_{xc}(\boldsymbol{r})
+      \partial V_{xc}(\boldr)
     }{
       \partial \mu
     } \\[3pt]
     \frac{
-      \partial V_{H}(\boldsymbol{r})
+      \partial V_{H}(\boldr)
     }{
       \partial \mu
     }
@@ -159,17 +159,17 @@
     \int \frac{
       1
     }{
-      |\boldsymbol{r} - \boldsymbol{r}'|
+      |\boldr - \boldr'|
     }
     \mathcolor{red}{
       \frac{
-      \partial \rho(\boldsymbol{r}')
+      \partial \rho(\boldr')
       }{
       \partial \mu
-    }} \, \mathrm{d}\boldsymbol{r}';
+    }} \, \mathrm{d}\boldr';
     &\qquad
     \frac{
-      \partial V_{xc}(\boldsymbol{r})
+      \partial V_{xc}(\boldr)
     }{
       \partial \mu
     }
@@ -177,16 +177,16 @@
     \frac{
       \mathrm{d} V_{xc}
     }{
-      \mathrm{d} \rho(\boldsymbol{r})
+      \mathrm{d} \rho(\boldr)
     }
     \mathcolor{red}{
       \frac{
-      \partial \rho(\boldsymbol{r})
+      \partial \rho(\boldr)
       }{
       \partial \mu
     }}
     % \frac{
-    %   \partial \rho(\boldsymbol{r})
+    %   \partial \rho(\boldr)
     % }{
     %   \partial \mu
     % }
@@ -194,15 +194,15 @@
     % \sum_n^{occ}
     % \left[
     %     \frac{
-    %     \partial \psi^*_n(\boldsymbol{r})
+    %     \partial \psi^*_n(\boldr)
     %     }{
     %     \partial \mu
     %     }
-    %     \psi_n(\boldsymbol{r})
+    %     \psi_n(\boldr)
     %     +
-    %     \psi^*_n(\boldsymbol{r})
+    %     \psi^*_n(\boldr)
     %     \frac{
-    %     \partial \psi_n(\boldsymbol{r})
+    %     \partial \psi_n(\boldr)
     %     }{
     %     \partial \mu
     %     }
@@ -214,99 +214,122 @@
   \textcolor{blue}{Electron density response to the perturbation}
   \small
 
-  \begin{equation*}
+  \begin{align}
     \frac{
-      \partial \rho(\boldsymbol{r})
-    }{
-      \partial \mu
-    }
-    =
-    \sum_n^{occ}
-    \left[
-        \frac{
-        \partial \psi_n^*(\boldsymbol{r})
-        }{
-        \partial \mu
-        }
-        \psi_n(\boldsymbol{r})
-        +
-        \psi_n^*(\boldsymbol{r})
-        \frac{
-        \partial \psi_n(\boldsymbol{r})
-        }{
-        \partial \mu
-        }
-    \right]
-  \end{equation*}
-  Define $P_v = \sum_n \ket{\psi_n}\bra{\psi_n}$ as the projector on the valence
-  bands, then $P_c = \mathbb{1} - P_v$ is the projector on the conduction bands
-  \begin{align*}
-    \frac{
-      \partial \rho(\boldsymbol{r})
+      \partial \rho(\boldr)
     }{
       \partial \mu
     }
     &=
-    \sum_n
+    \sum_n^{occ}
     \left[
-      P_c
         \frac{
-        \partial \psi_n^*(\boldsymbol{r})
+        \partial \psi_n^*(\boldr)
         }{
         \partial \mu
         }
-        \psi_n(\boldsymbol{r})
+        \psi_n(\boldr)
         +
-        \psi_n^*(\boldsymbol{r})
+        \psi_n^*(\boldr)
+        \frac{
+        \partial \psi_n(\boldr)
+        }{
+        \partial \mu
+        }
+    \right] \label{eq:density_response_all}\\
+    \frac{
+      \partial \psi_n(\boldr)
+    }{
+      \partial \mu
+    }
+    &=
+    \sum_{m\ne n}
+    \frac{
+      \braket{
+        \psi_m |
+        {\partial V_{KS}(\boldr)\over \partial \mu}
+        | \psi_n
+      }
+    }{
+        \varepsilon_n - \varepsilon_m
+    }
+    \psi_m(\boldr) \label{eq:wfc_response}
+  \end{align}
+  Where $n$ is the index for the occupied staets and $m$ runs over all the states.
+  % Substitute Eq.~\ref{eq:wfc_response} into Eq.~\ref{eq:density_response_all},
+  % it can be shown that the 
+
+  \medskip
+
+  Define $P_v = \sum_n^{occ} \ket{\psi_n}\bra{\psi_n}$ as the projector on the valence
+  bands, then $P_c = \mathbb{1} - P_v$ is the projector on the conduction bands
+  \begin{align*}
+    \frac{
+      \partial \rho(\boldr)
+    }{
+      \partial \mu
+    }
+    &=
+    \sum_n^{occ}
+    \left[
+      P_c
+        \frac{
+        \partial \psi_n^*(\boldr)
+        }{
+        \partial \mu
+        }
+        \psi_n(\boldr)
+        +
+        \psi_n^*(\boldr)
         P_c
         \frac{
-        \partial \psi_n(\boldsymbol{r})
+        \partial \psi_n(\boldr)
         }{
         \partial \mu
         }
     \right]
     +
-    \sum_n
+    \sum_n^{occ}
     \left[
       P_v
         \frac{
-        \partial \psi_n^*(\boldsymbol{r})
+        \partial \psi_n^*(\boldr)
         }{
         \partial \mu
         }
-        \psi_n(\boldsymbol{r})
+        \psi_n(\boldr)
         +
-        \psi_n^*(\boldsymbol{r})
+        \psi_n^*(\boldr)
         P_v
         \frac{
-        \partial \psi_n(\boldsymbol{r})
+        \partial \psi_n(\boldr)
         }{
         \partial \mu
         }
     \right] \\
     &=
-    \sum_n
+    \sum_n^{occ}
     \left[
       P_c
         \frac{
-        \partial \psi_n^*(\boldsymbol{r})
+        \partial \psi_n^*(\boldr)
         }{
         \partial \mu
         }
-        \psi_n(\boldsymbol{r})
+        \psi_n(\boldr)
         +
-        \psi_n^*(\boldsymbol{r})
+        \psi_n^*(\boldr)
         P_c
         \frac{
-        \partial \psi_n(\boldsymbol{r})
+        \partial \psi_n(\boldr)
         }{
         \partial \mu
         }
     \right]
     +
-    \sum_{mn}
-      \psi^*_m(\boldsymbol{r})
-      \psi_n(\boldsymbol{r})
+    \sum_{mn}^{occ}
+      \psi^*_m(\boldr)
+      \psi_n(\boldr)
       \left(
       \braket{
         \frac{
@@ -330,12 +353,12 @@
       \right)
   \end{align*}
 
-  Due the orthonormality of $\psi_n(\boldsymbol{r})$, i.e.\ $\braket{\psi_m | \psi_n} = \delta_{mn}$
+  Due the orthonormality of $\psi_n(\boldr)$, i.e.\ $\braket{\psi_m | \psi_n} = \delta_{mn}$
 
   \begin{equation}
     \label{eq:density_response}
     \frac{
-      \partial \rho(\boldsymbol{r})
+      \partial \rho(\boldr)
     }{
       \partial \mu
     }
@@ -344,22 +367,135 @@
     \left[
       P_c
         \frac{
-        \partial \psi_n^*(\boldsymbol{r})
+        \partial \psi_n^*(\boldr)
         }{
         \partial \mu
         }
-        \psi_n(\boldsymbol{r})
+        \psi_n(\boldr)
         +
-        \psi_n^*(\boldsymbol{r})
+        \psi_n^*(\boldr)
         P_c
         \frac{
-        \partial \psi_n(\boldsymbol{r})
+        \partial \psi_n(\boldr)
         }{
         \partial \mu
         }
     \right]
   \end{equation}
- 
+
+  The electron density response depends only on the component of the
+  perturbation that \emph{ couples the occupied states with the empty ones.}
+
+  \break
+
+  Apply $P_c$ on the left and right-hand side of Eq.~\ref{eq:dfpt_eq}
+  \begin{equation}
+    \label{eq:dfpt_eq_final}
+    \biggl[
+    -{\hbar^2\over2m}\nabla^2 + V_{KS}(\boldr)
+    +
+    \mathcolor{olive}{
+      \alpha P_v
+    }
+    - \varepsilon_n
+    \biggr]
+    \mathcolor{green}{
+        P_c
+        \frac{
+        \partial \psi_n(\boldr)
+        }{
+        \partial\mu
+        }
+    }
+    =
+    -(\mathbb{1} - P_v)
+    \mathcolor{blue}{
+    \frac{
+      \partial V_{KS}(\boldr)
+    }{
+      \partial\mu
+    }
+    }
+    \psi_n(\boldr)
+  \end{equation}
+
+  where the $\mathcolor{olive}{\alpha P_v}$ is added to make the left-hand-side nonsingular.
+
+  \begin{align}
+    \mathcolor{blue}{
+    \frac{
+      \partial V_{KS}(\boldr)
+    }{
+      \partial \mu
+    }}
+    &=
+    \frac{
+      \partial V_{ext}(\boldr)
+    }{
+      \partial \mu
+    }
+    +
+    \int \frac{
+      1
+    }{
+      |\boldr - \boldr'|
+    }
+    \mathcolor{red}{
+      \frac{
+      \partial \rho(\boldr')
+      }{
+      \partial \mu
+    }} \, \mathrm{d}\boldr'
+    +
+    \frac{
+      \mathrm{d} V_{xc}
+    }{
+      \mathrm{d} \rho(\boldr)
+    }
+    \mathcolor{red}{
+      \frac{
+      \partial \rho(\boldr)
+      }{
+      \partial \mu
+    }} \label{eq:perturbation_final}
+    \\[6pt]
+    \mathcolor{red}{
+        \frac{
+        \partial \rho(\boldr)
+        }{
+        \partial \mu
+        }
+    }
+    &=
+    \sum_n^{occ}
+    \left[
+      \mathcolor{green}{
+        P_c
+        \frac{
+        \partial \psi_n^*(\boldr)
+        }{
+        \partial \mu
+        }
+      }
+      \psi_n(\boldr)
+      +
+      \psi_n^*(\boldr)
+      \mathcolor{green}{
+        P_c
+        \frac{
+        \partial \psi_n(\boldr)
+        }{
+        \partial \mu
+        }
+      }
+    \right]
+    \label{eq:density_response_final}
+  \end{align}
+
+  Eq.~\ref{eq:dfpt_eq_final}, Eq.~\ref{eq:perturbation_final} and
+  Eq.~\ref{eq:density_response_final} form a set of self-consistent euqations
+  for the perturbed system.
+
 \end{frame}
 
 %%% Local Variables:
