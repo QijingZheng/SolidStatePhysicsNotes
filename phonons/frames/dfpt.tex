@@ -1,4 +1,4 @@
-\begin{frame}
+\begin{frame}[allowframebreaks]
   \frametitle{Density Functional Perturbation Theory}
 
   % \begin{center}
@@ -44,7 +44,7 @@
   %   }
   % \end{center}
   \begin{multicols}{2}
-    The Kohn-Sham eqution
+    \textcolor{blue}{The Kohn-Sham eqution}
     \begin{align*}
       \biggl[
         -{\hbar^2\over2m}\nabla^2 &+ V_{KS}(\boldsymbol{r}; \mu)
@@ -208,6 +208,158 @@
     %     }
     % \right]
   \end{align}
+
+  \break
+
+  \textcolor{blue}{Electron density response to the perturbation}
+  \small
+
+  \begin{equation*}
+    \frac{
+      \partial \rho(\boldsymbol{r})
+    }{
+      \partial \mu
+    }
+    =
+    \sum_n^{occ}
+    \left[
+        \frac{
+        \partial \psi_n^*(\boldsymbol{r})
+        }{
+        \partial \mu
+        }
+        \psi_n(\boldsymbol{r})
+        +
+        \psi_n^*(\boldsymbol{r})
+        \frac{
+        \partial \psi_n(\boldsymbol{r})
+        }{
+        \partial \mu
+        }
+    \right]
+  \end{equation*}
+  Define $P_v = \sum_n \ket{\psi_n}\bra{\psi_n}$ as the projector on the valence
+  bands, then $P_c = \mathbb{1} - P_v$ is the projector on the conduction bands
+  \begin{align*}
+    \frac{
+      \partial \rho(\boldsymbol{r})
+    }{
+      \partial \mu
+    }
+    &=
+    \sum_n
+    \left[
+      P_c
+        \frac{
+        \partial \psi_n^*(\boldsymbol{r})
+        }{
+        \partial \mu
+        }
+        \psi_n(\boldsymbol{r})
+        +
+        \psi_n^*(\boldsymbol{r})
+        P_c
+        \frac{
+        \partial \psi_n(\boldsymbol{r})
+        }{
+        \partial \mu
+        }
+    \right]
+    +
+    \sum_n
+    \left[
+      P_v
+        \frac{
+        \partial \psi_n^*(\boldsymbol{r})
+        }{
+        \partial \mu
+        }
+        \psi_n(\boldsymbol{r})
+        +
+        \psi_n^*(\boldsymbol{r})
+        P_v
+        \frac{
+        \partial \psi_n(\boldsymbol{r})
+        }{
+        \partial \mu
+        }
+    \right] \\
+    &=
+    \sum_n
+    \left[
+      P_c
+        \frac{
+        \partial \psi_n^*(\boldsymbol{r})
+        }{
+        \partial \mu
+        }
+        \psi_n(\boldsymbol{r})
+        +
+        \psi_n^*(\boldsymbol{r})
+        P_c
+        \frac{
+        \partial \psi_n(\boldsymbol{r})
+        }{
+        \partial \mu
+        }
+    \right]
+    +
+    \sum_{mn}
+      \psi^*_m(\boldsymbol{r})
+      \psi_n(\boldsymbol{r})
+      \left(
+      \braket{
+        \frac{
+        \partial \psi_n
+        }{
+        \partial \mu
+        }
+        |
+        \psi_m
+      }
+      +
+      \braket{
+        \psi_n
+        |
+        \frac{
+        \partial \psi_m
+        }{
+        \partial \mu
+        }
+      }
+      \right)
+  \end{align*}
+
+  Due the orthonormality of $\psi_n(\boldsymbol{r})$, i.e.\ $\braket{\psi_m | \psi_n} = \delta_{mn}$
+
+  \begin{equation}
+    \label{eq:density_response}
+    \frac{
+      \partial \rho(\boldsymbol{r})
+    }{
+      \partial \mu
+    }
+    =
+    \sum_n^{occ}
+    \left[
+      P_c
+        \frac{
+        \partial \psi_n^*(\boldsymbol{r})
+        }{
+        \partial \mu
+        }
+        \psi_n(\boldsymbol{r})
+        +
+        \psi_n^*(\boldsymbol{r})
+        P_c
+        \frac{
+        \partial \psi_n(\boldsymbol{r})
+        }{
+        \partial \mu
+        }
+    \right]
+  \end{equation}
+ 
 \end{frame}
 
 %%% Local Variables:

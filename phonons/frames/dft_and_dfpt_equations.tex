@@ -1,0 +1,350 @@
+\begin{frame}
+  \frametitle{DFT \& DFPT Equations}
+  % \begin{columns}[t]
+  %   \begin{column}{0.45\textwidth}
+  %     \centerline{\textcolor{red}{\large DFT}}
+  %     \bigskip
+
+  %     \resizebox{1.0\linewidth}{!}{
+  %     \begin{tikzpicture}
+  %       [
+  %           node distance=0.7in,
+  %           every node/.style={        
+  %           fill=red!20,
+  %           rounded corners,
+  %           },
+  %           align=center
+  %       ]
+  %       \node (rho_vks_map) [draw] {
+  %         $\displaystyle
+  %         \rho(\boldr)
+  %         \rightleftharpoons
+  %         V_{KS}(\boldr)
+  %         $
+  %       };
+  %       % below = of : sytax for positioning library
+  %       \node (v_ks) [draw, below of=rho_vks_map, text width=2in] {
+  %         $\displaystyle
+  %         V_{KS}(\boldr) =
+  %         v_{ext}(\boldr) +
+  %         \int\, \frac{
+  %           \rho(\boldr')
+  %         }{
+  %           |\boldr - \boldr'|
+  %         } \, \mathrm{d} \boldr'
+  %         +
+  %         v_{xc}(\boldr)
+  %         $
+  %       };
+  %       \node (ks_equation) [draw, below of=v_ks]{
+  %         $\displaystyle
+  %         \left[
+  %           -\frac{\hbar^2}{2m} \nabla^2 + V_{KS}(\boldr)
+  %         \right]
+  %         \psi_n(\boldr)
+  %         =
+  %         \varepsilon_n
+  %         \psi_n(\boldr)
+  %         $
+  %       };
+  %       \node (rho) [draw, below of = ks_equation] {
+  %         $\displaystyle
+  %         \rho(\boldr) = \sum_n^{occ} |\psi_n(\boldr) |^2
+  %         $
+  %       };
+
+  %       \draw[-{Stealth[length=6pt, open]}] (rho_vks_map.south) -- (v_ks.north);
+  %       \draw[-{Stealth[length=6pt, open]}] (v_ks.south) -- (ks_equation.north);
+  %       \draw[-{Stealth[length=6pt, open]}] (ks_equation.south) -- (rho.north);
+  %       \draw[-{Stealth[length=6pt, open]}] (rho.east)
+  %                                           -| ($(v_ks.east) + (0.3in, 0.0)$)
+  %                                           -- (v_ks.east);
+  %     \end{tikzpicture}
+  %     }
+      
+  %   \end{column}
+
+  %   \begin{column}{0.45\textwidth}
+  %     \centerline{\textcolor{blue}{\large DFPT}}
+  %     \bigskip
+
+  %     \resizebox{1.0\linewidth}{!}{
+  %     \begin{tikzpicture}
+  %       [
+  %           node distance=0.7in,
+  %           every node/.style={        
+  %           fill=blue!20,
+  %           rounded corners,
+  %           },
+  %           align=center
+  %       ]
+  %       \node (rho_vks_map) [draw] {
+  %         $\displaystyle
+  %         \frac{
+  %           \partial \rho(\boldr)
+  %         }{
+  %           \partial \mu
+  %         }
+  %         \rightleftharpoons
+  %         \frac{
+  %           \partial
+  %           V_{KS}(\boldr)
+  %         }{
+  %           \partial \mu
+  %         } $
+  %       };
+  %       \node (v_ks) [draw, below of=rho_vks_map, textwidth=2in] {
+  %         $\displaystyle
+  %          \frac{
+  %            \partial V_{KS}(\boldr)
+  %          }{
+  %            \partial \mu
+  %          }
+  %          =
+  %          \frac{
+  %            \partial V_{ext}(\boldr)
+  %          }{
+  %            \partial \mu
+  %          }
+  %          +
+  %          \int\, {
+  %            1\over |\boldr - \boldr'|
+  %          }
+  %          \frac{
+  %            \partial \rho(\boldr')
+  %          }{
+  %            \partial \mu
+  %          }\, \dt{\boldr'}
+  %          +
+  %          \frac{
+  %            \dt{V_{xc}}
+  %          }{
+  %            \dt{\rho(\boldr)}
+  %          }
+  %          \frac{
+  %            \partial \rho(\boldr')
+  %          }{
+  %            \partial \mu
+  %          }
+  %         $
+  %       };
+  %       \node (ks_equation) [draw, below of=v_ks]{
+  %         $\displaystyle
+  %         \left[
+  %           -\frac{\hbar^2}{2m} \nabla^2 + V_{KS}(\boldr)
+  %         \right]
+  %         \psi_n(\boldr)
+  %         =
+  %         \varepsilon_n
+  %         \psi_n(\boldr)
+  %         $
+  %       };
+  %       \node (rho) [draw, below of = ks_equation] {
+  %         $\displaystyle
+  %         \rho(\boldr) = \sum_n^{occ} |\psi_n(\boldr) |^2
+  %         $
+  %       };
+
+  %       \draw[-{Stealth[length=6pt, open]}] (rho_vks_map.south) -- (v_ks.north);
+  %       \draw[-{Stealth[length=6pt, open]}] (v_ks.south) -- (ks_equation.north);
+  %       \draw[-{Stealth[length=6pt, open]}] (ks_equation.south) -- (rho.north);
+  %       \draw[-{Stealth[length=6pt, open]}] (rho.east)
+  %                                           -| ($(v_ks.east) + (0.3in, 0.0)$)
+  %                                           -- (v_ks.east);
+  %     \end{tikzpicture}
+  %     }
+  %   \end{column}
+  % \end{columns}
+ 
+  \begin{center}
+    \resizebox{0.99\textwidth}{!}{
+      \begin{tikzpicture}
+        [
+            align=center,
+            node distance=0.9in,
+            dft/.style={        
+              inner sep =6pt,
+              draw,
+              fill=red!20,
+              rounded corners,
+            },
+            dfpt/.style={        
+              inner sep =6pt,
+              draw,
+              fill=blue!20,
+              rounded corners,
+            }
+        ]
+        \node (dft_title) []{
+          \textcolor{red}{\huge DFT}
+        };
+        \node (rho_vks_map) [dft, below of=dft_title] {
+          $\displaystyle
+          \rho(\boldr)
+          \rightleftharpoons
+          V_{KS}(\boldr)
+          $
+        };
+        % below = of : sytax for positioning library
+        \node (v_ks) [dft, below of=rho_vks_map, text width=3.2in] {
+          $\displaystyle
+          V_{KS}(\boldr) =
+          V_{ext}(\boldr) +
+          \int\, \frac{
+            \rho(\boldr')
+          }{
+            |\boldr - \boldr'|
+          } \, \mathrm{d} \boldr'
+          +
+          V_{xc}(\boldr)
+          $
+        };
+        \node (ks_equation) [dft, below of=v_ks]{
+          $\displaystyle
+          \left[
+            -\frac{\hbar^2}{2m} \nabla^2 + V_{KS}(\boldr)
+          \right]
+          \psi_n(\boldr)
+          =
+          \varepsilon_n
+          \psi_n(\boldr)
+          $
+        };
+        \node (rho) [dft, below of = ks_equation] {
+          $\displaystyle
+          \rho(\boldr) = \sum_n^{occ} |\psi_n(\boldr) |^2
+          $
+        };
+
+        \draw[-{Stealth[length=6pt, open]}] (rho_vks_map.south) -- (v_ks.north);
+        \draw[-{Stealth[length=6pt, open]}] (v_ks.south) -- (ks_equation.north);
+        \draw[-{Stealth[length=6pt, open]}] (ks_equation.south) -- (rho.north);
+        \draw[-{Stealth[length=6pt, open]}] (rho.east)
+                                            -| ($(v_ks.east) + (0.3in, 0.0)$)
+                                            -- (v_ks.east);
+
+
+                                            
+        % DFPT
+        \node (dfpt_title) [right= 3.7in of dft_title]{
+          \textcolor{blue}{\huge DFPT}
+        };
+        \node (drho_dvks_map) [dfpt, below of=dfpt_title] {
+          $\displaystyle
+          \frac{
+            \partial \rho(\boldr)
+          }{
+            \partial \mu
+          }
+          \rightleftharpoons
+          \frac{
+            \partial
+            V_{KS}(\boldr)
+          }{
+            \partial \mu
+          } $
+        };
+        \node (dv_ks) [dfpt, below of=drho_dvks_map, text width=3.2in] {
+          $\displaystyle
+           \frac{
+             \partial V_{KS}(\boldr)
+           }{
+             \partial \mu
+           }
+           =
+           \frac{
+             \partial V_{ext}(\boldr)
+           }{
+             \partial \mu
+           }
+           +
+           \int\, {
+             1\over |\boldr - \boldr'|
+           }
+           \frac{
+             \partial \rho(\boldr')
+           }{
+             \partial \mu
+           }\, \dt{\boldr'}
+           +
+           \frac{
+             \dt{V_{xc}}
+           }{
+             \dt{\rho(\boldr)}
+           }
+           \frac{
+             \partial \rho(\boldr)
+           }{
+             \partial \mu
+           }
+          $
+        };
+        \node (dfpt_equation) [dfpt, below of=dv_ks]{
+          $\displaystyle
+          \left[
+            -\frac{\hbar^2}{2m} \nabla^2
+            +
+            V_{KS}(\boldr)
+            -
+            \varepsilon_n
+          \right]
+          P_c
+          \frac{
+            \partial \psi_n(\boldr)
+          }{
+            \partial \mu
+          }
+          =
+          -P_c
+          \frac{
+            \partial V_{KS}(\boldr)
+          }{
+            \partial \mu
+          }
+          \psi_n(\boldr)
+          $
+        };
+        \node (drho) [dfpt, below of = dfpt_equation] {
+          $\displaystyle
+           \frac{
+             \partial \rho(\boldr)
+           }{
+             \partial \mu
+           }
+           =
+           \sum_n^{occ}
+           \left[
+             P_c
+               \frac{
+               \partial \psi_n^*(\boldr)
+               }{
+               \partial \mu
+               }
+               \psi_n(\boldr)
+               +
+               \psi_n^*(\boldr)
+               P_c
+               \frac{
+               \partial \psi_n(\boldr)
+               }{
+               \partial \mu
+               }
+           \right]
+           $
+        };
+
+        \draw[-{Stealth[length=6pt, open]}] (drho_dvks_map.south) -- (dv_ks.north);
+        \draw[-{Stealth[length=6pt, open]}] (dv_ks.south) -- (dfpt_equation.north);
+        \draw[-{Stealth[length=6pt, open]}] (dfpt_equation.south) -- (drho.north);
+        \draw[-{Stealth[length=6pt, open]}] (drho.east)
+                                            -| ($(dv_ks.east) + (0.3in, 0.0)$)
+                                            -- (dv_ks.east);
+      \end{tikzpicture}
+    }
+  \end{center}
+\end{frame}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
