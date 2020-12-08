@@ -65,7 +65,7 @@
   %   \end{column}
 
   %   \begin{column}{0.45\textwidth}
-  %     \centerline{\textcolor{blue}{\large DFPT}}
+  %     \centerline{\textcolor{blue}{\large \textbf{DFPT}}}
   %     \bigskip
 
   %     \resizebox{1.0\linewidth}{!}{
@@ -160,23 +160,24 @@
     \resizebox{0.99\textwidth}{!}{
       \begin{tikzpicture}
         [
-            align=center,
             node distance=0.9in,
-            dft/.style={        
+            every node/.style={
+              align=center,
               inner sep =6pt,
+              rounded corners,
+              font=\normalsize
+            },
+            dft/.style={        
               draw,
               fill=red!20,
-              rounded corners,
             },
             dfpt/.style={        
-              inner sep =6pt,
               draw,
               fill=blue!20,
-              rounded corners,
             }
         ]
         \node (dft_title) []{
-          \textcolor{red}{\huge DFT}
+          \textcolor{red}{\huge \textbf{DFT}}
         };
         \node (rho_vks_map) [dft, below of=dft_title] {
           $\displaystyle
@@ -285,6 +286,8 @@
             -\frac{\hbar^2}{2m} \nabla^2
             +
             V_{KS}(\boldr)
+            +
+            \alpha P_v
             -
             \varepsilon_n
           \right]
@@ -312,24 +315,15 @@
              \partial \mu
            }
            =
+           2
            \sum_n^{occ}
-           \left[
-             P_c
-               \frac{
-               \partial \psi_n^*(\boldr)
-               }{
-               \partial \mu
-               }
-               \psi_n(\boldr)
-               +
-               \psi_n^*(\boldr)
-               P_c
-               \frac{
-               \partial \psi_n(\boldr)
-               }{
-               \partial \mu
-               }
-           \right]
+           \psi_n^*(\boldr)
+           P_c
+           \frac{
+             \partial \psi_n(\boldr)
+           }{
+             \partial \mu
+           }
            $
         };
 

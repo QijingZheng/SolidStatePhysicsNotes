@@ -489,12 +489,59 @@
         }
       }
     \right]
-    \label{eq:density_response_final}
+    \nonumber
   \end{align}
 
+
+  Considering the time-reversal symmetry $\psi^*_{n,\text{-}\bdm{k}}(\boldr) =
+  \psi_{n,\bdm{k}}(\boldr)$
+
+  \begin{align}
+    \mathcolor{red}{
+        \frac{
+        \partial \rho(\boldr)
+        }{
+        \partial \mu
+        }
+    }
+    &=
+    \sum_{n,\text{-}\bdm{k}}^{occ}
+      \mathcolor{green}{
+        P_c
+        \frac{
+        \partial \psi_{n,\text{-}\bdm{k}}^*(\boldr)
+        }{
+        \partial \mu
+        }
+      }
+      \psi_{n,\text{-}\bdm{k}}(\boldr)
+      +
+    \sum_{n,\bdm{k}}^{occ}
+      \psi_{n,\bdm{k}}^*(\boldr)
+      \mathcolor{green}{
+        P_c
+        \frac{
+        \partial \psi_{n,\bdm{k}}(\boldr)
+        }{
+        \partial \mu
+        }
+      } \nonumber \\[6pt]
+    &=
+    2\sum_{n,\bdm{k}}^{occ}
+      \psi_{n,\bdm{k}}^*(\boldr)
+      \mathcolor{green}{
+        P_c
+        \frac{
+        \partial \psi_{n,\bdm{k}}(\boldr)
+        }{
+        \partial \mu
+        }
+      } \label{eq:density_response_final}
+  \end{align}
   Eq.~\ref{eq:dfpt_eq_final}, Eq.~\ref{eq:perturbation_final} and
   Eq.~\ref{eq:density_response_final} form a set of self-consistent euqations
   for the perturbed system.
+
 
 \end{frame}
 
