@@ -3,7 +3,7 @@
 
   \begin{center}
     % \resizebox{0.35\textwidth}{!}{
-    \resizebox{!}{0.36\textheight}{
+    \resizebox{!}{0.28\textheight}{
     \begin{tikzpicture}
         \begin{axis}[
             width=3in, height=3in,
@@ -33,13 +33,13 @@
                 x index=0, y index=\i,
             ] {data/nacl_freq_no_nac.dat};
         }
-        \draw[olive, dashed, line width=1.0pt] (0.480, 4.608) circle [radius=12pt];
+        \draw[ForestGreen, dashed, line width=1.5pt] (0.480, 4.608) circle [radius=12pt];
         \end{axis}
     \end{tikzpicture}
     }
-    \hspace{20pt}
+    \hspace{30pt}
     % \resizebox{0.35\textwidth}{!}{
-    \resizebox{!}{0.36\textheight}{
+    \resizebox{!}{0.28\textheight}{
     \begin{tikzpicture}
         \begin{axis}[
             width=3in, height=3in,
@@ -72,10 +72,10 @@
 % \begin{frame}
 %   \frametitle{Anatase TiO$_2$ Phonon Dispersion}
 
-  \smallskip
+  % \smallskip
   \begin{center}
     % \resizebox{0.35\textwidth}{!}{
-    \resizebox{!}{0.36\textheight}{
+    \resizebox{!}{0.30\textheight}{
     \begin{tikzpicture}
         \begin{axis}[
             width=3in, height=3in,
@@ -108,9 +108,9 @@
         \end{axis}
     \end{tikzpicture}
     }
-    \hspace{20pt}
+    \hspace{30pt}
     % \resizebox{0.35\textwidth}{!}{
-    \resizebox{!}{0.36\textheight}{
+    \resizebox{!}{0.30\textheight}{
     \begin{tikzpicture}
         \begin{axis}[
             width=3in, height=3in,
@@ -133,12 +133,24 @@
                 x index=0, y index=\i,
             ] {data/tio2_freq_nac.dat};
         }
-        \draw[olive, dashed, line width=1.0pt] (0.5078005, 22.5) circle [radius=16pt];
+        \draw[ForestGreen, dashed, line width=1.5pt] (0.5078005, 22.5) circle [radius=16pt];
         \end{axis}
     \end{tikzpicture}
     }
   \end{center}
+
+  \begin{itemize}
+  \justifying\small
+  \item The limiting value of Eq.~\ref{eq:dynmat_nac} may be different for
+    different $\bdm{q}\to0$ directions, as can be seen in the phonon dispersion
+    of Anatase TiO$_2$.
+    
+  \item This strange behavior is physical and the frequency of the observed
+    phonons depends on the polarizability in the different directions, with
+    respect to the propagation of the incoming electric field.
+  \end{itemize}
 \end{frame}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: t

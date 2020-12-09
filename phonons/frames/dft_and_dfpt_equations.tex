@@ -160,7 +160,7 @@
     \resizebox{0.99\textwidth}{!}{
       \begin{tikzpicture}
         [
-            node distance=0.9in,
+            node distance=1.0in,
             every node/.style={
               align=center,
               inner sep =6pt,
@@ -187,7 +187,7 @@
           $
         };
         % below = of : sytax for positioning library
-        \node (v_ks) [dft, below of=rho_vks_map, text width=3.2in] {
+        \node (v_ks) [dft, below of=rho_vks_map, text width=2.5in] {
           $\displaystyle
           V_{KS}(\boldr) =
           V_{ext}(\boldr) +
@@ -213,7 +213,7 @@
         };
         \node (rho) [dft, below of = ks_equation] {
           $\displaystyle
-          \rho(\boldr) = \sum_n^{occ} |\psi_n(\boldr) |^2
+          \rho(\boldr) = \sum_n^{occ} \psi^*_n(\boldr) \psi_n(\boldr) 
           $
         };
 
@@ -221,14 +221,14 @@
         \draw[-{Stealth[length=6pt, open]}] (v_ks.south) -- (ks_equation.north);
         \draw[-{Stealth[length=6pt, open]}] (ks_equation.south) -- (rho.north);
         \draw[-{Stealth[length=6pt, open]}] (rho.west)
-                                            -| ($(v_ks.west) - (0.3in, 0.0)$)
+                                            -| ($(v_ks.west) - (0.45in, 0.0)$)
                                             -- (v_ks.west);
 
 
                                             
         % DFPT
-        \node (dfpt_title) [right= 3.7in of dft_title]{
-          \textcolor{blue}{\huge DFPT}
+        \node (dfpt_title) [right= 3.2in of dft_title]{
+          \textcolor{blue}{\huge \textbf{DFPT}}
         };
         \node (drho_dvks_map) [dfpt, below of=dfpt_title] {
           $\displaystyle
@@ -245,14 +245,14 @@
             \partial \mu
           } $
         };
-        \node (dv_ks) [dfpt, below of=drho_dvks_map, text width=3.2in] {
-          $\displaystyle
+        \node (dv_ks) [dfpt, below of=drho_dvks_map, text width=2.5in] {
+          \begin{align*}
            \frac{
              \partial V_{KS}(\boldr)
            }{
              \partial \mu
            }
-           =
+           &=
            \frac{
              \partial V_{ext}(\boldr)
            }{
@@ -266,19 +266,20 @@
              \partial \rho(\boldr')
            }{
              \partial \mu
-           }\, \dt{\boldr'}
-           +
+           }\, \dt{\boldr'} \\[3pt]
+           &+
+           \int\,
            \frac{
              \dt{V_{xc}}
            }{
-             \dt{\rho(\boldr)}
+             \dt{\rho(\boldr')}
            }
            \frac{
-             \partial \rho(\boldr)
+             \partial \rho(\boldr')
            }{
              \partial \mu
-           }
-          $
+           }\, \dt{\boldr'}
+         \end{align*}
         };
         \node (dfpt_equation) [dfpt, below of=dv_ks]{
           $\displaystyle
@@ -331,7 +332,7 @@
         \draw[-{Stealth[length=6pt, open]}] (dv_ks.south) -- (dfpt_equation.north);
         \draw[-{Stealth[length=6pt, open]}] (dfpt_equation.south) -- (drho.north);
         \draw[-{Stealth[length=6pt, open]}] (drho.east)
-                                            -| ($(dv_ks.east) + (0.3in, 0.0)$)
+                                            -| ($(dv_ks.east) + (0.45in, 0.0)$)
                                             -- (dv_ks.east);
       \end{tikzpicture}
     }

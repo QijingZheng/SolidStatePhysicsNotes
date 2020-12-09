@@ -1,0 +1,111 @@
+\begin{frame}
+  \frametitle{DFPT Interpolation Scheme for Polar Material}
+
+  \begin{center}
+    \resizebox{!}{0.88\textheight}{
+      \begin{tikzpicture}
+        [
+            node distance=0.75in,
+            interp/.style={
+              align=center,
+              inner sep =3pt,
+              rounded corners,
+              font=\normalsize,
+              draw,
+              fill=red!20,
+              minimum height=1.0cm,
+              text width = 3cm,
+              anchor=center,
+            }
+        ]
+
+
+        \node (dynmat_coarse_grid) [interp, fill=blue!20] {
+          Calculate $D_{s\alpha,t\beta}(\bdm{q})$ on coarse $\bdm{q}$-grid
+        };
+        \node (Z_and_e) [
+            interp,
+            fill=blue!20,
+            right = 0.6in of dynmat_coarse_grid
+        ]{
+          Calculate $Z^*_s$ and $\epsilon_\infty$
+        };
+
+        \node (sum_rules) [
+          interp,
+          below=0.6in,
+        ] at ($ (dynmat_coarse_grid)!0.5!(Z_and_e) $) {
+          enforce sum rules \\[3pt]
+          $Z^*_s$ and $D_{s\alpha,t\beta}(\bdm{q})$
+        };
+        \node (subtract_nac_dynmat) [
+           interp,
+            below of = sum_rules,
+            text width = 5cm,
+        ]{
+          subtract the dipole-dipole term
+          \begin{equation*}
+            D_{s\alpha,t\beta}^{SR}(\bdm{q}) = D_{s\alpha,t\beta}(\bdm{q}) - D_{s\alpha,t\beta}^{na}(\bdm{q})
+          \end{equation*}
+        };
+        \node (IFC) [
+           interp,
+            below of = subtract_nac_dynmat,
+            text width = 4.0cm,
+        ]{
+          Fourier Transform  $\,\Rightarrow C_{s\alpha,t\beta}^{0, l}$
+        };
+        \node (dynmat_arb_qpoint) [
+           interp,
+            below of = IFC,
+            text width = 5.4cm,
+        ]{
+          $D_{s\alpha, t\beta}(\bdm{q}')$ at arbitrary $\bdm{q}'$-points
+            \begin{equation*}
+                \mathcolor{black}{
+                D^{SR}_{s\alpha,t\beta}(\bdm{q}')
+                }
+                \approx
+                {1\over\sqrt{M_sM_t}\,}
+                \sum_{|l| < l_{\text{cut}}}
+                C_{s\alpha,t\beta}^{0, l}\,
+                e^{i\bdm{q}'\boldsymbol{x}_l}
+            \end{equation*}
+        };
+        \node (add_nac_dynmat) [
+           interp,
+            below of = dynmat_arb_qpoint,
+            text width = 4.5cm,
+        ]{
+          add the dipole-dipole term
+          \begin{equation*}
+            D_{s\alpha,t\beta}(\bdm{q}') = D_{s\alpha,t\beta}^{SR}(\bdm{q}') + D_{s\alpha,t\beta}^{na}(\bdm{q}')
+          \end{equation*}
+        };
+        \node (mat_diag) [
+           interp,
+           below of = add_nac_dynmat,
+        ]{
+          Diagonalize $D_{s\alpha, t\beta}(\bdm{q}')$
+        };
+
+        \node (A) [] at ($ (dynmat_coarse_grid.south)!0.5!(Z_and_e.south) $) {};
+        \node (B) [] at ($ (A)!0.5!(sum_rules.north) $) {};
+        \draw[] (dynmat_coarse_grid.south) |- (B.center) -| (Z_and_e.south);
+
+        \draw[-{Stealth[length=6pt, open]}] (B.center) -> (sum_rules.north);
+        \draw[-{Stealth[length=6pt, open]}] (sum_rules.south) -- (subtract_nac_dynmat.north);
+        \draw[-{Stealth[length=6pt, open]}] (subtract_nac_dynmat.south) -- (IFC.north);
+        \draw[-{Stealth[length=6pt, open]}] (IFC.south) -- (dynmat_arb_qpoint.north);
+        \draw[-{Stealth[length=6pt, open]}] (dynmat_arb_qpoint.south) -- (add_nac_dynmat.north);
+        \draw[-{Stealth[length=6pt, open]}] (add_nac_dynmat.south) -- (mat_diag.north);
+      \end{tikzpicture}
+    }
+  \end{center}
+
+\end{frame}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

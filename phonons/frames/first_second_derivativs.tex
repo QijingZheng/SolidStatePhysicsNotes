@@ -5,12 +5,12 @@
     E_{\text{tot}} =
     \sum_{i}^{\textit{occ}}
     \braket{
-      \psi_i(\boldsymbol{r})
+      \psi_i(\boldr)
       |-{\hbar^2\over2m}\nabla^2 |
-      \psi_i(\boldsymbol{r})
+      \psi_i(\boldr)
     }
     +
-    \int_{\tikzmark{int_space}V} V_{\text{ext}}(\boldsymbol{r}) \rho(\boldsymbol{r}) \,\mathrm{d}\boldsymbol{r}
+    \int_{\tikzmark{int_space}V} V_{\text{ext}}(\boldr) \rho(\boldr) \,\mathrm{d}\boldr
     +
     E_H[\rho]
     +
@@ -38,13 +38,12 @@
 
   \begin{multicols}{2}
     \begin{itemize}
-      \item $V_{\text{ext}}(\boldsymbol{r})$: electron-ion interaction
+      \item $V_{\text{ext}}(\boldr)$: electron-ion interaction
       \item $U_{II}$: ion-ion interaction
       \item $E_H[\rho]$: electron Hartree energy
       \item $E_{xc}[\rho]$: exchange-correlation energy
-      \item $\rho(\boldsymbol{r})$: electron density
-      \item[] $\displaystyle \rho(\boldsymbol{r}) = \sum_i^{occ} \braket{\psi_i^*(\boldsymbol{r}) |
-          \psi_i(\boldsymbol{r})}$
+      \item $\rho(\boldr)$: electron density
+      \item[] $\displaystyle \rho(\boldr) = \sum_i^{occ} \psi_i^*(\boldr) \psi_i(\boldr)$
     \end{itemize}
   \end{multicols}
 
@@ -61,12 +60,12 @@
     \int_V
     \frac{
       \partial
-      V_{\text{ext}}(\boldsymbol{r})
+      V_{\text{ext}}(\boldr)
     }{
       \partial \lambda
     }
-    \mathcolor{blue}{\rho(\boldsymbol{r})}
-    \,\mathrm{d}\boldsymbol{r}
+    \mathcolor{blue}{\rho(\boldr)}
+    \,\mathrm{d}\boldr
     +
     \frac{
       \partial
@@ -85,12 +84,12 @@
     \int_V
     \frac{
       \partial^2
-      V_{\text{ext}}(\boldsymbol{r})
+      V_{\text{ext}}(\boldr)
     }{
       \partial \lambda
       \partial \mu
     }
-    \mathcolor{blue}{\rho(\boldsymbol{r})} \,\mathrm{d}\boldsymbol{r}
+    \mathcolor{blue}{\rho(\boldr)} \,\mathrm{d}\boldr
     +
     \frac{
       \partial^2 U_{II}
@@ -102,19 +101,19 @@
     \int_V
     \frac{
       \partial
-      V_{\text{ext}}(\boldsymbol{r})
+      V_{\text{ext}}(\boldr)
     }{
       \partial \lambda
     }
     \mathcolor{red}{
       \frac{
         \partial
-        \rho(\boldsymbol{r})
+        \rho(\boldr)
       }{
         \partial \mu
       }
     }
-    \,\mathrm{d}\boldsymbol{r} \label{eq:energy_2nd_deriv}
+    \,\mathrm{d}\boldr \label{eq:energy_2nd_deriv}
   \end{align}
 
   2-nd derivative requires the extra calculation of the \textit{linear response}

@@ -156,7 +156,7 @@
       \partial \mu
     }
     =
-    \int \frac{
+    \int\, \frac{
       1
     }{
       |\boldr - \boldr'|
@@ -174,17 +174,18 @@
       \partial \mu
     }
     =
+    \int\,
     \frac{
       \mathrm{d} V_{xc}
     }{
-      \mathrm{d} \rho(\boldr)
+      \mathrm{d} \rho(\boldr')
     }
     \mathcolor{red}{
       \frac{
-      \partial \rho(\boldr)
+      \partial \rho(\boldr')
       }{
       \partial \mu
-    }}
+    }} \, \mathrm{d}\boldr'
     % \frac{
     %   \partial \rho(\boldr)
     % }{
@@ -435,7 +436,7 @@
       \partial \mu
     }
     +
-    \int \frac{
+    \int\, \frac{
       1
     }{
       |\boldr - \boldr'|
@@ -447,17 +448,19 @@
       \partial \mu
     }} \, \mathrm{d}\boldr'
     +
+    \int\,
     \frac{
       \mathrm{d} V_{xc}
     }{
-      \mathrm{d} \rho(\boldr)
+      \mathrm{d} \rho(\boldr')
     }
     \mathcolor{red}{
       \frac{
-      \partial \rho(\boldr)
+      \partial \rho(\boldr')
       }{
       \partial \mu
-    }} \label{eq:perturbation_final}
+    }} \, \mathrm{d}\boldr'
+    \label{eq:perturbation_final}
     \\[6pt]
     \mathcolor{red}{
         \frac{
