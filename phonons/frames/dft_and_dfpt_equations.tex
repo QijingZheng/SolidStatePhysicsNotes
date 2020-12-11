@@ -176,10 +176,8 @@
               fill=blue!20,
             }
         ]
-        \node (dft_title) []{
-          \textcolor{red}{\huge \textbf{DFT}}
-        };
-        \node (rho_vks_map) [dft, below of=dft_title] {
+        % \node (rho_vks_map) [dft, below of=dft_title] {
+        \node (rho_vks_map) [dft] {
           $\displaystyle
           \rho(\boldr)
           \rightleftharpoons
@@ -227,10 +225,7 @@
 
                                             
         % DFPT
-        \node (dfpt_title) [right= 3.2in of dft_title]{
-          \textcolor{blue}{\huge \textbf{DFPT}}
-        };
-        \node (drho_dvks_map) [dfpt, below of=dfpt_title] {
+        \node (drho_dvks_map) [dfpt, right =2.6in of rho_vks_map] {
           $\displaystyle
           \frac{
             \partial \rho(\boldr)
@@ -334,6 +329,13 @@
         \draw[-{Stealth[length=6pt, open]}] (drho.east)
                                             -| ($(dv_ks.east) + (0.45in, 0.0)$)
                                             -- (dv_ks.east);
+
+        \node (dft_title) [] at ($ (rho_vks_map.center) + (0.0, 0.6in) $) {
+          \textcolor{red}{\huge \textbf{DFT}}
+        };
+        \node (dfpt_title) [] at ($ (drho_dvks_map.center) + (0.0, 0.6in) $) {
+          \textcolor{blue}{\huge \textbf{DFPT}}
+        };
       \end{tikzpicture}
     }
   \end{center}

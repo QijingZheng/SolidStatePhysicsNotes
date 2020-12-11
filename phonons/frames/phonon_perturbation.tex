@@ -1,0 +1,92 @@
+\begin{frame}[allowframebreaks]
+  \frametitle{DFPT --- Incommensurate Perturbations}
+
+  In a solid, the external potential can be expressed as the superposition of
+  atomic potential $v_s(\boldr)$
+  \begin{equation*}
+    V_{ext}(\boldr) = \sum_{j}\sum_{s}^{N_a} v_s(\boldr - \bdm{x}_{j} -
+    \bdm{d}_s - \bdm{u}^j_s)
+  \end{equation*}
+
+  Consider the periodic displacement of the ions of the form
+  \begin{equation*}
+    u_{s\alpha}^j(\bdm{q}) = \mu_{s\alpha}  \, e^{ i\bdm{q}\cdot \bdm{x}_j}
+                           + \mu_{s\alpha}^*\, e^{-i\bdm{q}\cdot \bdm{x}_j}
+    \qquad
+    (\alpha = x, y, z)
+  \end{equation*}
+  \begin{center}
+    \resizebox{0.6\textwidth}{!}{
+      \begin{tikzpicture}
+      \foreach \i in {0, 1,...,6}{
+          \foreach \j in {0, 1}{
+          \foreach \x/\y/\c in {0.3/0.3/blue, 0.7/0.7/blue, 0.2/0.8/red, 0.8/0.2/red}{
+              \shade[ball color=\c] (\x + \i, \y + \j) circle (0.08);
+          }
+          }
+      }
+      \draw[help lines, thin, draw=gray] (0, 0) grid (7, 2);
+
+      \draw[line width=0.8pt, color=ForestGreen, domain=0:7.0, densely dotted] plot[samples=300]
+      (
+      \x, {0.3 + 0.3 * cos((\x - 0.3) * 2. * pi / 7 r)}
+      );
+      \foreach \x in {0,1,...,6}{
+        \pgfmathparse{0.3 * cos((\x) * 2 * pi / 7. r)}
+        \let \y = \pgfmathresult
+        \shade[] (\x +0.3, 0.3 + \y) circle (0.05);
+        \draw[-{Stealth[length=6pt, open]}, tips=proper, thick, ForestGreen] (\x+0.3, 0.3) -- ++(0.0, \y);
+      };
+
+      \draw[line width=0.8pt, color=ForestGreen, domain=0:7.0, densely dotted] plot[samples=300]
+      (
+      \x, {1.3 + 0.3 * cos((\x - 0.3) * 2. * pi / 7 r)}
+      );
+      \foreach \x in {0,1,...,6}{
+        \pgfmathparse{0.3 * cos((\x) * 2 * pi / 7. r)}
+        \let \y = \pgfmathresult
+        \shade[] (\x +0.3, 1.3 + \y) circle (0.05);
+        \draw[-{Stealth[length=6pt, open]}, tips=proper, thick, ForestGreen] (\x+0.3, 1.3) -- ++(0.0, \y);
+      };
+      \end{tikzpicture}
+    }
+  \end{center}
+  \begin{align*}
+    \frac{
+      \partial V^{\bdm{q}}_{ext}(\boldr)
+    }{
+      \partial \mu_{s\alpha}
+    }
+    &=
+    -\sum_j
+    e^{i\bdm{q}\cdot\bdm{x}_j}\,
+    \left.
+    \frac{
+      \partial v_{s}(\boldr - \bdm{x}_j - \bdm{d}_s)
+    }{
+      \partial \mu_{s\alpha}
+    }
+    \right|_{u_s^j=0} \\
+    &=
+    -e^{i\bdm{q}\cdot\bdm{r}}\,
+    \mathcolor{magenta}{
+    \sum_j
+    e^{i\bdm{q}\cdot{(\bdm{x}_j - \boldr)}}\,
+    \left.
+    \frac{
+      \partial v_{s}(\boldr - \bdm{x}_j - \bdm{d}_s)
+    }{
+      \partial \mu_{s\alpha}
+    }
+    \right|_{u_s^j=0}
+    }
+  \end{align*}
+
+  The \textcolor{magenta}{colored quantity} has the periodicity of the lattice.
+
+\end{frame}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
