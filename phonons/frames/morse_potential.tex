@@ -1,0 +1,84 @@
+\begin{frame}
+  \frametitle{Interatmoic Potential}
+  \begin{center}
+  \resizebox{0.618\textwidth}{!}{
+    % The Morse potential for diatomic molecules
+    \begin{tikzpicture}
+      [
+      spring/.style={
+        line width=0.5pt,
+        decorate,
+        decoration={
+            coil,
+            amplitude=2.5,
+            segment length=3.5,
+          }
+        },
+      ]
+      % plot the axes
+      \draw[-{Stealth[length=6pt, open]}, help lines] (0, -2.4) --
+                                          (0, 2.4)
+                                          node [pos=0.25, sloped, above] {
+                                              \textcolor{blue}{\small attractive}
+                                            }
+                                          node [pos=0.75, sloped, above] {
+                                            \textcolor{red}{\small repulsive }
+                                          }
+                                          node [above left] {$E$};
+      \draw[-{Stealth[length=6pt, open]}, help lines] (0,  0) -- (6, 0) node [below] {$r$};
+      
+      % the Morse potential
+      % V(r) = D( 1 - exp(-a(r - r0)))**2 - D
+      % D = -1.8; r0 = 1.0; a = 1.0
+      \draw[line width=0.6pt, color=black, domain=0.1:5.5, solid]
+        plot[samples=300] (\x, {1.8 * (1 - exp(-(\x - 1)))^2 - 1.8});
+      % the harmonic approximation
+      \draw[line width=0.6pt, color=blue, domain=0.1:1.9, densely dashed]
+        plot[samples=300] (\x, {1.8 * (\x - 1.0)^2 - 1.8});
+
+      % the minimum
+      \draw[help lines, dashed] (1, 0) node[above] {$r_0$} -- (1, -1.8);
+      \draw[help lines, dashed] (0, -1.8) -- (5.0, -1.8);        
+      \draw[
+        {Stealth[length=6pt, open]}-{Stealth[length=6pt, open]},
+        help lines,
+        dashed
+      ]
+      (4.5, 0) --
+      node[pos=0.5, right, text width=6em, align=left] {
+        $\sim\si{eV}$ \\
+        \tiny\color{red}
+        $\SI{1}{eV} = \SI{11604}{\kelvin}$
+      }
+      (4.5, -1.8);
+
+      \begin{scope}[on background layer]
+      \shade[top color=white,bottom color=red!80] 
+        (1.0, -1.8) parabola (1.3, -1.638) -- (0.7, -1.638) parabola [bend at
+        end] (1.0, -1.8);
+      \end{scope}
+
+      % plot the atoms
+      \draw[spring, help lines]
+        (3.0, 1.5)
+        --
+        node [pos=0.5, above=3pt] {$r$}
+        ++(1.0, 0.0);
+      \shade[ball color=blue] (3.0, 1.5) circle (0.2);
+      \shade[ball color=blue] (4.0, 1.5) circle (0.2);
+
+      % Formula for the Morse potential
+      % \node (morse_pot_formula) [align=center] at (3.0, 2.4) {
+      %   $\displaystyle
+      %     V(r) = D\left(1 - e^{-a(r - r_0)}\right)^2
+      %   $
+      % };
+
+    \end{tikzpicture}
+  }
+  \end{center}
+\end{frame}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

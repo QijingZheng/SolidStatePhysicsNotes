@@ -1,9 +1,209 @@
 \begin{frame}[allowframebreaks]
-  \frametitle{Incommensurate Perturbations}
+  \frametitle{DFPT --- Incommensurate Perturbations}
 
-  Within DFPT, the response to perturbations of different wavelengths are decoupled.
+  Add a monochromatic perturbation characterized by generic wavevector $\bdm{q}$ to the periodic potential
 
+  \begin{equation*}
+    % \frac{
+    %   \partial V_{ext}^{\bdm{q}}(\boldr + \bdm{x})
+    % }{
+    %   \partial \mu
+    % }
+    % =
+    % e^{i\bdm{q}\bdm{x}}\,
+    % \frac{
+    %   \partial V_{ext}^{\bdm{q}}(\boldr)
+    % }{
+    %   \partial \mu
+    % }
+    V_{ext}(\boldr + \bdm{x}_j)
+    =
+    V_{ext}(\boldr)
+    ;
+    \qquad
+    \Delta V_{ext}^{\bdm{q}}(\boldr + \bdm{x}_j)
+    =
+    e^{i\bdm{q}\cdot\bdm{x}_j}\,
+    \Delta V_{ext}^{\bdm{q}}(\boldr)
+  \end{equation*}
 
+  It can be shown that all the linear responses are also characterized by wavevector $\bdm{q}$
+  \begin{align*}
+    \Delta V_{KS}^{\bdm{q}}(\boldr + \bdm{x}_j) &= e^{i\bdm{q}\cdot\bdm{x}_j}\,
+                                                  \Delta V_{KS}^{\bdm{q}}(\boldr) \\[3pt]
+    \Delta\rho^{\bdm{q}}(\boldr + \bdm{x}_j) &= e^{i\bdm{q}\cdot\bdm{x}_j}\,
+                                                \Delta\rho^{\bdm{q}}(\boldr) \\[3pt]
+    \Delta \psi_{n,\bdm{k}}^{\bdm{q}}(\boldr + \bdm{x}_j) &=
+                                                     e^{i\bdm{q}\cdot\bdm{x}_j}\,
+                                                     \Delta \psi_{n,\bdm{k}}^{\bdm{q}}(\boldr)
+  \end{align*}
+  Let us define the related periodic quantities
+  \begin{align*}
+    \Delta V_{ext}^{\bdm{q}}(\boldr) &= e^{i\bdm{q}\cdot\boldr}\, {\tilde V}_{ext}^{\bdm{q}}(\boldr);
+    &
+     {\tilde V}_{ext}^{\bdm{q}}(\boldr + \bdm{x}_j) &= 
+     {\tilde V}_{ext}^{\bdm{q}}(\boldr);
+    \\[3pt]
+    \Delta V_{KS}^{\bdm{q}}(\boldr) &= e^{i\bdm{q}\cdot\boldr}\, {\tilde V}_{KS}^{\bdm{q}}(\boldr);
+    &
+     {\tilde V}_{KS}^{\bdm{q}}(\boldr + \bdm{x}_j) &= 
+     {\tilde V}_{KS}^{\bdm{q}}(\boldr);
+    \\[3pt]
+    \Delta\rho^{\bdm{q}}(\boldr) &= e^{i\bdm{q}\cdot\boldr}\, {\tilde\rho}^{\bdm{q}}(\boldr);
+    &
+     {\tilde \rho}^{\bdm{q}}(\boldr + \bdm{x}_j) &= 
+     {\tilde \rho}^{\bdm{q}}(\boldr);
+    \\[3pt]
+    \psi_{n,\bdm{k}}(\boldr) &= e^{i\bdm{k}\cdot\boldr}\, u_{n,\bdm{k}}(\boldr);
+    &
+     u_{n,\bdm{k}}(\boldr + \bdm{x}_j) &= 
+     u_{n,\bdm{k}}(\boldr); \\[3pt]
+    \Delta \psi_{n,\bdm{k}}^{\bdm{q}}(\boldr) &= e^{i(\bdm{k} + \bdm{q})\cdot\boldr}\, \Delta u_{n,\bdm{k}}^{\bdm{q}}(\boldr);
+    &
+     \Delta u_{n,\bdm{k}}^{\bdm{q}}(\boldr + \bdm{x}_j) &= 
+     \Delta u_{n,\bdm{k}}^{\bdm{q}}(\boldr);
+  \end{align*}
+
+  % Within DFPT, the response to perturbations of different wavelengths are decoupled.
+  \break
+
+  Substitute into Eq.~\ref{eq:dfpt_eq_final}
+  \begin{equation}
+    \label{eq:dfpt_eq_periodic}
+    \biggl[
+    H_{KS}(\boldr)
+    +
+    \mathcolor{olive}{
+      \alpha P_v
+    }
+    - \varepsilon_{n,\bdm{k}}
+    \biggr]
+    \mathcolor{ForestGreen}{
+        P_c
+        e^{i(\bdm{k}+\bdm{q})\cdot\boldr}\,
+        \frac{
+        \partial u_{n,\bdm{k}}^{\bdm{q}}(\boldr)
+        }{
+        \partial\mu
+        }
+    }
+    =
+    -P_c
+    e^{i(\bdm{k}+\bdm{q})\cdot\boldr}\,
+    \mathcolor{blue}{
+    \frac{
+      \partial {\tilde V}^{\bdm{q}}_{KS}(\boldr)
+    }{
+      \partial\mu
+    }
+    }
+    u_{n,\bdm{k}}(\boldr)
+  \end{equation}
+  Apply the phase $e^{-i(\bdm{k}+\bdm{q})\cdot\boldr}$ to the both sides of Eq.~\ref{eq:dfpt_eq_periodic}
+   \begin{equation}
+    \label{eq:dfpt_eq_periodic_final}
+    \biggl[
+    % e^{-i(\bdm{k}+\bdm{q})\cdot\boldr}
+    H^{\bdm{k}+\bdm{q}}_{KS}(\boldr)
+    % e^{i(\bdm{k}+\bdm{q})\cdot\boldr'}
+    +
+    \mathcolor{olive}{
+      \alpha P_v^{\bdm{k}+\bdm{q}}
+    }
+    - \varepsilon_{n,\bdm{k}}
+    \biggr]
+    \mathcolor{ForestGreen}{
+        P_c^{\bdm{k}+\bdm{q}}
+        \frac{
+        \partial u_{n,\bdm{k}}^{\bdm{q}}(\boldr)
+        }{
+        \partial\mu
+        }
+    }
+    =
+    -P_c^{\bdm{k}+\bdm{q}}
+    \mathcolor{blue}{
+    \frac{
+      \partial {\tilde V}^{\bdm{q}}_{KS}(\boldr)
+    }{
+      \partial\mu
+    }
+    }
+    u_{n,\bdm{k}}(\boldr)
+  \end{equation}
+
+  where 
+  \begin{gather*}
+    \mathcolor{blue}{
+    \frac{
+      \partial {\tilde V}_{KS}(\boldr)
+    }{
+      \partial \mu
+    }}
+    =
+    \frac{
+      \partial {\tilde V}_{ext}(\boldr)
+    }{
+      \partial \mu
+    }
+    +
+    \int\, \frac{
+      1
+    }{
+      |\boldr - \boldr'|
+    }
+    \mathcolor{red}{
+      \frac{
+      \partial {\tilde\rho}^{\bdm{q}}(\boldr')
+      }{
+      \partial \mu
+    }} \, \mathrm{d}\boldr'
+    +
+    \int\,
+    \frac{
+      \mathrm{d} V_{xc}
+    }{
+      \mathrm{d} \rho(\boldr')
+    }
+    \mathcolor{red}{
+      \frac{
+      \partial {\tilde\rho}^{\bdm{q}}(\boldr')
+      }{
+      \partial \mu
+    }} \, \mathrm{d}\boldr'
+    \\[3pt]
+    \mathcolor{red}{
+        \frac{
+        \partial {\tilde\rho}^{\bdm{q}}(\boldr')
+        }{
+        \partial \mu
+        }
+    }
+    =
+    2\sum_{n,\bdm{k}}^{occ}
+      u_{n,\bdm{k}}^*(\boldr)
+      \mathcolor{ForestGreen}{
+        P_c^{\bdm{k} + \bdm{q}}
+        \frac{
+            \partial u_{n,\bdm{k}}^{\bdm{q}}(\boldr)
+        }{
+            \partial \mu
+        }
+      } 
+    \\[3pt]
+    P_v^{\bdm{k} + \bdm{q}}
+    =
+    \sum_n^{occ} \ket{u_{n,\bdm{k}+\bdm{q}}}\bra{u_{n,\bdm{k}+\bdm{q}}}
+    ;
+    \quad
+    P_c^{\bdm{k} + \bdm{q}}
+    =
+    \mathbb{1} -  P_v^{\bdm{k} + \bdm{q}}
+  \end{gather*}
+
+  The treatment of perturbations incommensurate with the unperturbed system
+  periodicity is mapped onto the \emph{original periodic system}.
+ 
 \end{frame}
 
 %%% Local Variables:

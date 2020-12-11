@@ -4,7 +4,7 @@
     \begin{column}{0.5\textwidth}
         \begin{center}
             \begin{tikzpicture}
-            [scale=1.3]
+            [scale=1.1]
             \foreach \i in {0, 1, 2}{
                 \foreach \j in {0, 1, 2}{
                 \foreach \x/\y/\c in {0.3/0.3/blue, 0.7/0.7/blue, 0.2/0.8/red, 0.8/0.2/red}{
@@ -13,12 +13,26 @@
                 }
             }
             \draw[help lines, thin, draw=gray] (0, 0) grid (3, 3);
-            % \foreach \i in {0, 1, 2, 3}{
-            %     \foreach \j in {0, 1, 2, 3}{
-            %         \draw[thin, draw=gray] (\i, \j) -- (3, \j);
-            %         \draw[thin, draw=gray] (\j, \i) -- (\j, 3);
-            %     }
-            % }
+            \foreach \i in {0, 1, 2, 3}{
+                \foreach \j in {0, 1, 2, 3}{
+                    \draw[thin, draw=gray, densely dash dot] (\i, -0.3) -- ++(0, 0.3);
+                    \draw[thin, draw=gray, densely dash dot] (\i,  3.0) -- ++(0, 0.3);
+                    \draw[thin, draw=gray, densely dash dot] (-0.3, \j) -- ++(0.3, 0);
+                    \draw[thin, draw=gray, densely dash dot] ( 3.0, \j) -- ++(0.3, 0);
+                }
+            }
+            % \begin{scope}[on background layer]
+            %   \shade[
+            %     % shading=axis,
+            %     % top color=white,
+            %     % bottom color=white,
+            %     % left color=white,
+            %     % right color=white,
+            %     % middle color=gray!30
+            %     shading=radial,
+            %     inner color=gray!40
+            %   ] (0, 0) rectangle (3, 3);
+            % \end{scope}
             % move one of the atoms
             \shade[ball color=red!40] (1.6, 2.4) circle (0.08);
 
