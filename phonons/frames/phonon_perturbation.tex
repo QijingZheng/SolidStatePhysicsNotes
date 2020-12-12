@@ -1,5 +1,5 @@
 \begin{frame}[allowframebreaks]
-  \frametitle{DFPT --- Incommensurate Perturbations}
+  \frametitle{Periodic Displacement of Ions --- Phonon Perturbation}
 
   In a solid, the external potential can be expressed as the superposition of
   atomic potential $v_s(\boldr)$
@@ -9,12 +9,13 @@
   \end{equation*}
 
   Consider the periodic displacement of the ions of the form
-  \begin{equation*}
+  \begin{equation}
+    \label{eq:phonon_periodic_perturb}
     u_{s\alpha}^j(\bdm{q}) = \mu_{s\alpha}  \, e^{ i\bdm{q}\cdot \bdm{x}_j}
                            + \mu_{s\alpha}^*\, e^{-i\bdm{q}\cdot \bdm{x}_j}
     \qquad
     (\alpha = x, y, z)
-  \end{equation*}
+  \end{equation}
   \begin{center}
     \resizebox{0.6\textwidth}{!}{
       \begin{tikzpicture}
@@ -64,7 +65,7 @@
     \frac{
       \partial v_{s}(\boldr - \bdm{x}_j - \bdm{d}_s)
     }{
-      \partial \mu_{s\alpha}
+      \partial r_\alpha
     }
     \right|_{u_s^j=0} \\
     &=
@@ -76,13 +77,79 @@
     \frac{
       \partial v_{s}(\boldr - \bdm{x}_j - \bdm{d}_s)
     }{
-      \partial \mu_{s\alpha}
+      \partial r_\alpha
     }
     \right|_{u_s^j=0}
     }
   \end{align*}
 
   The \textcolor{magenta}{colored quantity} has the periodicity of the lattice.
+
+  \break
+
+  The dynamical matrix 
+  \begin{equation*}
+    D_{s\alpha, t\beta}(\bdm{q})
+    =
+    {1\over\sqrt{M_sM_t}}
+    \sum_k
+    e^{-i\bdm{q}\cdot\bdm{x}_j}
+    \frac{
+      \partial^2 E^0_{\text{tot}}
+    }{
+      \partial {u}_{s\alpha}^j
+      \partial {u}_{t\beta}^k
+    }
+    e^{i\bdm{q}\cdot\bdm{x}_k}
+    =
+    {N\over\sqrt{M_sM_t}}
+    \frac{
+      \partial^2 E^0_{\text{tot}}
+    }{
+      \partial {\mu}_{s\alpha}^*
+      \partial {\mu}_{t\beta}
+    }
+  \end{equation*}
+  Inserting the equation for the second derivative Eq.~\ref{eq:energy_2nd_deriv}
+  \begin{align*}
+    D_{s\alpha, t\beta}(\bdm{q})
+    &=
+    {N\over\sqrt{M_sM_t}}
+    \int_V\,
+    \mathcolor{red}{
+    \sum_k
+    e^{-i\bdm{q}\cdot\bdm{x}_j}
+    \frac{
+      \partial^2 V_{ext}^{\bdm{q}}(\boldr)
+    }{
+      \partial {u}_{s\alpha}^j
+      \partial {u}_{t\beta}^k
+    }\,
+    \rho(\boldr)
+    \, e^{i\bdm{q}\cdot\bdm{x}_k}
+    }
+    \,\dt{\boldr} \\[3pt]
+    &+
+    {1\over\sqrt{M_sM_t}}
+    \int_V\,
+    \mathcolor{blue}{
+    \sum_k
+    e^{-i\bdm{q}\cdot\bdm{x}_j}
+    \frac{
+      \partial V_{ext}^{\bdm{q}}(\boldr)
+    }{
+      \partial {u}_{s\alpha}^j
+    }
+    \frac{
+      \partial \rho(\boldr)
+    }{
+      \partial {u}_{t\beta}^k
+    }
+    \, e^{i\bdm{q}\cdot\bdm{x}_k}
+    }
+    \,\dt{\boldr} \\[3pt]
+  \end{align*}
+
 
 \end{frame}
 
