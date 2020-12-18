@@ -97,8 +97,8 @@
         \node[below, align=left] at (1.0, 0.0) {${\pi\over a}$};
         \node[below, align=right] at (-1.0, 0.0) {-${\pi\over a}$};
         \node[right, anchor=south west] at (0.0, 1.0) {$\sqrt{4K\over M}$};
-        \draw[{Stealth[length=6pt, open]}-{Stealth[length=6pt, open]}]
-        (-1, -.3) -- (1.0, -.3) node[midway, fill=white] {\small First Brillouin Zone};
+        \draw[{Stealth[length=6pt, open]}-{Stealth[length=6pt, open]}, gray]
+        (-1, -.3) -- (1.0, -.3) node[midway, fill=white] {\small $1^{st}$ Brillouin Zone};
 
         \draw[line width=1.0pt, color=red, domain=0:2.0, solid] plot[samples=300]
         (\x, {sin(\x r * pi / 2)});
