@@ -1,0 +1,99 @@
+\begin{frame}
+  \frametitle{Condensed Matter --- Theory of Everything}
+  % \begin{equation*}
+  %   \mathcolor{red}{
+  %     \sum_i
+  %     \frac{\bdm{p}_i^2}{2m}
+  %     +
+  %     {1\over2}
+  %     \sum_{i,j}
+  %     \frac{e^2}{
+  %       |\boldr_i - \boldr_j|
+  %     }
+  %   }
+  %   +
+  %   \mathcolor{ForestGreen}{
+  %     \sum_{i,I}
+  %     \frac{Z_Ie^2}{
+  %       |\boldr_i - \bdm{R}_I|
+  %     }
+  %   }
+  %   +
+  %   \mathcolor{blue}{
+  %     \sum_I
+  %     \frac{\bdm{P}_I^2}{2M_I}
+  %     +
+  %     {1\over2}
+  %     \sum_{I,J}
+  %     \frac{Z_IZ_Je^2}{
+  %       |\bdm{R}_I - \bdm{R}_J|
+  %     }
+  %   }
+  % \end{equation*}
+
+  \begin{center}
+      \begin{tikzpicture}
+        [
+            node distance=0.3in,
+            every node/.style={
+              align=center,
+              inner sep =6pt,
+              rounded corners,
+              font=\normalsize
+            },
+        ]
+        \node (epc) [fill=ForestGreen!30] {
+          $\displaystyle
+            \sum_{i,I}
+            \frac{Z_Ie^2}{
+                |\boldr_i - \bdm{R}_I|
+            }
+          $
+        };
+        \node (hamil) [above=of epc] {
+          $\displaystyle
+          {\cal H}(\lbrace\boldr\rbrace, \lbrace\bdm{R}\rbrace)
+          $
+        };
+        \node (schro) [below=of epc, fill=gray!30] {
+          $\displaystyle
+          i\hbar{\partial \over \partial t} \psi(\lbrace\boldr\rbrace, \lbrace\bdm{R}\rbrace)
+          = 
+          {\cal H}(\lbrace\boldr\rbrace, \lbrace\bdm{R}\rbrace)
+          \,
+          \psi(\lbrace\boldr\rbrace, \lbrace\bdm{R}\rbrace)
+          $
+        };
+        \node (He) [left=of epc, text width=1.3in, fill=red!30, anchor=east] {
+          $\displaystyle
+            \sum_i
+            \frac{\hat{\bdm{p}}_i^2}{2m}
+            +
+            {1\over2}
+            \sum_{i,j}
+            \frac{e^2}{
+                |\boldr_i - \boldr_j|
+            }
+          $
+        };
+        \node (Hp) [right=of epc, text width=1.3in, fill=blue!30, anchor=west] {
+          $\displaystyle
+            \sum_I
+            \frac{\hat{\bdm{P}}_I^2}{2M_I}
+            +
+            {1\over2}
+            \sum_{I,J}
+            \frac{Z_IZ_Je^2}{
+                |\bdm{R}_I - \bdm{R}_J|
+            }
+          $
+        };
+
+        \path[line width=0pt] (epc.west) -- (He.east) node[pos=0.5] {${}+{}$};
+        \path[line width=0pt] (epc.east) -- (Hp.west) node[pos=0.5] {${}+{}$};
+        \path[line width=0pt] (epc.north) -- (hamil.south) node[pos=0.5, rotate=90] {$=$};
+        \path[line width=0pt] (epc.south) -- (schro.north) node[pos=0.5] {$\Downarrow$};
+      \end{tikzpicture}
+  \end{center}
+
+\end{frame}
