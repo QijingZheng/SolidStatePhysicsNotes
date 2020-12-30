@@ -15,10 +15,10 @@
             \draw[help lines, thin, draw=gray] (0, 0) grid (3, 3);
             \foreach \i in {0, 1, 2, 3}{
                 \foreach \j in {0, 1, 2, 3}{
-                    \draw[thin, draw=gray, densely dash dot] (\i, -0.3) -- ++(0, 0.3);
-                    \draw[thin, draw=gray, densely dash dot] (\i,  3.0) -- ++(0, 0.3);
-                    \draw[thin, draw=gray, densely dash dot] (-0.3, \j) -- ++(0.3, 0);
-                    \draw[thin, draw=gray, densely dash dot] ( 3.0, \j) -- ++(0.3, 0);
+                    \draw[help lines, line width=0.4pt, densely dash dot] (\i, -0.3) -- ++(0, 0.3);
+                    \draw[help lines, line width=0.4pt, densely dash dot] (\i,  3.0) -- ++(0, 0.3);
+                    \draw[help lines, line width=0.4pt, densely dash dot] (-0.3, \j) -- ++(0.3, 0);
+                    \draw[help lines, line width=0.4pt, densely dash dot] ( 3.0, \j) -- ++(0.3, 0);
                 }
             }
             % \begin{scope}[on background layer]
@@ -37,16 +37,16 @@
             \shade[ball color=red!40] (1.6, 2.4) circle (0.08);
 
             \draw[solid, draw=cyan, line width=0.5pt, ->, >=stealth]
-            (0.0, 0.0) -- node[above=3pt, pos=0.5] {\textcolor{cyan}{$\boldsymbol{x}_j$}} (1.0, 2.0);
+            (0.0, 0.0) -- node[above=3pt, pos=0.5] {\textcolor{cyan}{$\bdm{x}_j$}} (1.0, 2.0);
 
-            \draw[solid, draw=YellowGreen, line width=0.5pt, ->, >=stealth]
-            (1.0, 2.0) --  node[above, pos=0.2] {\textcolor{YellowGreen}{$\boldsymbol{d}_s$}} (1.8, 2.2);
+            \draw[solid, draw=ForestGreen, line width=0.5pt, ->, >=stealth]
+            (1.0, 2.0) --  node[above, pos=0.1] {\textcolor{ForestGreen}{$\bdm{d}_s$}} (1.8, 2.2);
 
-            \draw[solid, draw=Violet, line width=0.5pt, ->, >=stealth]
-            (1.8, 2.2) -- node[above=3pt, pos=0.5, anchor=west] {\textcolor{Violet}{$\boldsymbol{u}^j_s$}} (1.6, 2.4);
+            \draw[solid, draw=Violet, line width=0.7pt, ->, >=stealth]
+            (1.8, 2.2) -- node[above right, pos=0.4] {\textcolor{Violet}{$\bdm{u}^j_s$}} (1.6, 2.4);
 
             \draw[solid, draw=black, line width=0.5pt, ->, >=stealth]
-            (0.0, 0.0) -- node[below=5pt, pos=0.78] {$\boldsymbol{R}^j_s$} (1.6, 2.4);
+            (0.0, 0.0) -- node[below=2pt, pos=0.78] {$\bdm{R}^j_s$} (1.6, 2.4);
 
             \end{tikzpicture}
         \end{center}
