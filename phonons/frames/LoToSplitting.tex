@@ -54,7 +54,7 @@
   %   }
   % \end{center}
   \begin{center}
-    \resizebox{0.80\textwidth}{!}
+    \resizebox{0.98\textwidth}{!}
     {
         \begin{tikzpicture}
         [scale=1.0]
@@ -105,9 +105,11 @@
 
         % Add LO/TO labels
         \node[above=3pt, align=center, anchor=south] at ( 4.0, 3.0)
-        {\textbf{\large LO Phonon}};
+        % {\textbf{\large LO Phonon}};
+        {{\Large LO Phonon}};
         \node[above=3pt, align=center, anchor=south] at (14.0, 3.0)
-        {\textbf{\large TO Phonon}};
+        % {\textbf{\large TO Phonon}};
+        {{\Large TO Phonon}};
         % the q direction
         \draw[-{Stealth[length=6pt, open]}, draw, line width=0.8pt]
         (7.0, -1.5) --
@@ -135,8 +137,8 @@
           \node[align=center, red ] at (11.0 + \i * 2 / 10,  2.5){\textbf{+}};
           \node[align=center, blue] at (11.0 + \i * 2 / 10, -0.5){\huge\textbf{-}};
 
-          \node[align=center, blue] at (15.0 + \i * 2 / 10,  2.5){\textbf{+}};
-          \node[align=center, red ] at (15.0 + \i * 2 / 10, -0.5){\huge\textbf{-}};
+          \node[align=center, blue] at (15.0 + \i * 2 / 10,  2.5){\huge\textbf{-}};
+          \node[align=center, red ] at (15.0 + \i * 2 / 10, -0.5){\textbf{+}};
         }
         \draw[-{Stealth[length=6pt, open]}, draw, line width=0.8pt]
         (11.5, 1.8) -- (11.5, 0.2)
