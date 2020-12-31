@@ -24,13 +24,6 @@
     table/search path = {., data/}
 } 
 
-% \usepackage[
-%    % bottom,
-%    % flushmargin,
-%    % hang,
-%    % multiple
-% ]{footmisc}
-
 \usepackage[font={small,sf},labelfont={bf},labelsep=endash]{caption}
 \usepackage{sansmath}
 \usepackage{mathtools}
@@ -53,18 +46,14 @@
 \yyyymmdddate
 % \renewcommand{\dateseparator}{-}
 
-\makeatletter
-\def\mathcolor#1#{\@mathcolor{#1}}
-\def\@mathcolor#1#2#3{%
-  \protect\leavevmode
-  \begingroup
-    \color#1{#2}#3%
-  \endgroup
-}
-\makeatother
+% Chinese input
+\usepackage{xeCJK}
 
-\makeatletter
-\let\@@magyar@captionfix
-\relax\makeatother
+% Chinese font setting
+% \setCJKmainfont{Microsoft YaHei}
+% \setCJKmonofont{Source Code Pro}
+% \setCJKsansfont{YouYuan}
 
-% \usefonttheme[onlymath]{serif}
+% Chinese line break setting
+% \XeTeXlinebreaklocale "zh"
+% \XeTeXlinebreakskip = 0pt plus 1pt
